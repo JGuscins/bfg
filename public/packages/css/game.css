@@ -1,0 +1,22 @@
+.container {
+	max-width: 760px;
+	margin-top: 40px;
+}
+
+.login-box .logo {
+	text-align: center;
+}
+
+.login-box .login {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.logo-img {
+	max-width: 100%;
+}
+
+.login-box .login button {
+	width: 450px;
+	max-width: 100%;
+}
