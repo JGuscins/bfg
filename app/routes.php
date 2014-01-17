@@ -1,22 +1,23 @@
 <?php
 
 //TEST
-Route::get('test', 'TestController@index');
+Route::any('test', 'TestController@index');
+Route::any('testpost', 'TestController@post');
 
 // GAME
-Route::get('/', function()
-{
-    $data = [];
- 
-    if(Auth::check()) {
-        $data = Auth::user();
-    }
+Route::get('/', ['before' => 'auth', function() {
+	$user = Auth::user();
 
     return View::make('game.intro.index')
-    		->with('data', $data);
-});
+    		->with('user', $user);
+}]);
  
 // AUTH
+Route::get('login', function() {
+	return View::make('game.intro.login');
+});	
+
+
 Route::get('login/fb', function() {
     $facebook = new Facebook(Config::get('facebook'));
     $params = [
