@@ -64,12 +64,12 @@ Route::group(['prefix' => 'ajax'], function() {
 
                 if(isset($item['work'][1])) {
                     $e->id = $item['uid'];
-                    $e->employer_1 = $item['work'][1]['employer']['name'];
+                    $e->employer_2 = $item['work'][1]['employer']['name'];
                 }
 
                 if(isset($item['work'][2])) {
                     $e->id = $item['uid'];
-                    $e->employer_1 = $item['work'][2]['employer']['name'];
+                    $e->employer_3 = $item['work'][2]['employer']['name'];
                 }
 
                 $e->save();
