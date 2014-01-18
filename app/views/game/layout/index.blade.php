@@ -32,7 +32,7 @@
             method: 'pay',
             action: 'purchaseitem',
             product: 'http://bfg.mobbi.lv/test.html',
-            request_id: requestID,
+            request_id: 1137,
             quantity: quantity
           };
 
