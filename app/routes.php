@@ -14,7 +14,7 @@ Route::get('/', ['before' => 'auth', function() {
 }]);
 
 // QUESTION
-Route::group(['prefix' => 'ajax', ['before' => 'auth'], function() {
+Route::group(['prefix' => 'ajax', 'before' => 'auth', function() {
     Route::get('profile', function() {
         // PROFILE PICTURE
         $query = [ 
@@ -78,9 +78,7 @@ Route::group(['prefix' => 'ajax', ['before' => 'auth'], function() {
             'query' => "SELECT uid, interests, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND interests",
         ];
     });
-
-
-})
+}])
  
 // AUTH
 Route::get('login', function() {
