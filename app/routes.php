@@ -28,6 +28,8 @@ Route::get('get-question', function() {
     // GET CORRECT ANSWER UID
     $q['uid'] = $question->id;
     $q['type'] = $category;
+    $q['name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$q['uid'].'?fields=name'))->name;
+    $q['picture'] = 'https://graph.facebook.com/'.$q['uid'].'/picture?type=large';
 
     if($category == "Picture") {
         // QUESTION ABOUT PROFILE PICTURE
@@ -173,8 +175,6 @@ Route::get('get-question', function() {
         ];
     }
 
-    $q['name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$q['uid'].'?fields=name'))->name;
-    $q['picture'] = 'https://graph.facebook.com/'.$q['uid'].'/picture?type=large';
     $q['answers'] = $a['answers'];
 
     dd($q);
