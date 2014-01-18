@@ -27,10 +27,9 @@ Route::group(['prefix' => 'ajax'], function() {
         $data = $facebook->api($query);
 
         foreach($data as $item) {
-            dd($item);
             $p = new Picture;
-            $p->id = $item->uid;
-            $p->url = $item->pic_big;
+            $p->id = $item['uid'];
+            $p->url = $item['pic_big'];
             $p->save();
         }
     });
