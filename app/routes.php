@@ -27,11 +27,13 @@ Route::get('get-question', function() {
     // RANDOM CATEGORY
     $random = rand(0,7);
     $categories = ['Picture', 'Employment', 'Education', 'Birthdate', 'Book', 'Music', 'Movie', 'Interest'];
+    $categories_object = ['url', 'employer_1', 'school_1_name', 'birthdate', 'book', 'music', 'movies', 'interests'];
     $category = $categories[$random];
 
     // GENERATE QUESTION
-    $question = $category::where('id', $friends_uid)->get();
-    echo count($question);
+
+    $question = $category::where('id', $friends_uid)->where($categories_object[$random], '!=', '')->get();
+    dd($question);
 
 });
 
