@@ -17,7 +17,7 @@ Route::get('/', ['before' => 'auth', function() {
 Route::get('get-question', function() {
     $friends = Profile::where('uid', Session::get('uid'))->first();
 
-    dd($friends);
+    dd($friends->friends);
 
 });
 
