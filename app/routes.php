@@ -18,7 +18,7 @@ Route::get('50-50', function() {
     $correct = Session::get('correct_uid');
 
     foreach($answers as $item) {
-        if($item->uid == $correct) {
+        if($item['uid'] == $correct) {
             unset($item);
         } else {
             $q[] = $item;
