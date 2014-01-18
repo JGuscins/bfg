@@ -170,8 +170,10 @@ Route::get('get-question', function() {
     echo 'Question: '.$q['question'].'<br>';
     echo 'Anwsers: <br>';
     foreach($q['answers'] as $answer) {
-        echo 'Wrong user id: '.$answer['id'].'<br>';
+        $a['answers'] = ['uid' => $answer['id'], 'name' => 'x', 'picture' => 'x'];
     }
+
+    $q['answers'] = $a['answers'];
 
     dd($q);
 
