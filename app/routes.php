@@ -143,6 +143,10 @@ Route::group(['prefix' => 'ajax'], function() {
             'query' => "SELECT uid, birthday_date, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND birthday_date",
         ];
 
+        // FACEBOOK DATA
+        $facebook = new Facebook(Config::get('facebook'));
+        $data     = $facebook->api($query);
+
         // STORE DATA
         foreach($data as $item) {
             dd($item);
