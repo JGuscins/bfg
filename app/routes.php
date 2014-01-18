@@ -45,15 +45,15 @@ Route::get('get-question', function() {
             if($r == 1) {
                 $q['question'] = $question->employer_1;
                 // ANSWERS
-                $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+                $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
             } elseif($r == 2) {
                 $q['question'] = $question->employer_2;
                 // ANSWERS
-                $q['answers'] = $category::where(DB::raw('`employer_2`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+                $q['answers'] = $category::where(DB::raw('`employer_2`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
             } else {
                 $q['question'] = $question->employer_3;
                 // ANSWERS
-                $q['answers'] = $category::where(DB::raw('`employer_3`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+                $q['answers'] = $category::where(DB::raw('`employer_3`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
             }
         } elseif($question->employer_2 != '') {
             $r = rand(1,2);
@@ -61,16 +61,16 @@ Route::get('get-question', function() {
             if($r == 1) {
                 $q['question'] = $question->employer_1;
                 // ANSWERS
-                $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+                $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
             } else {
                 $q['question'] = $question->employer_2;
                 // ANSWERS
-                $q['answers'] = $category::where(DB::raw('`employer_2`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+                $q['answers'] = $category::where(DB::raw('`employer_2`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
             }
         } else {
             $q['question'] = $question->employer_1;
             // ANSWERS
-            $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+            $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
         }
     } elseif($category == "Education") {
         $q['title'] = $c_question[$random];
@@ -81,15 +81,15 @@ Route::get('get-question', function() {
             if($r == 1) {
                 $q['question'] = $question->school_1_name;
                 // ANSWERS
-                $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+                $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
             } elseif($r == 2) {
                 $q['question'] = $question->school_2_name;
                 // school_2_name
-                $q['answers'] = $category::where(DB::raw('`school_2_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+                $q['answers'] = $category::where(DB::raw('`school_2_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
             } else {
                 $q['question'] = $question->school_3_name;
                 // ANSWERS
-                $q['answers'] = $category::where(DB::raw('`school_3_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+                $q['answers'] = $category::where(DB::raw('`school_3_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
             }
         } elseif($question->school_2_name != '') {
             $r = rand(1,2);
@@ -97,16 +97,16 @@ Route::get('get-question', function() {
             if($r == 1) {
                 $q['question'] = $question->school_1_name;
                 // ANSWERS
-                $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+                $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
             } else {
                 $q['question'] = $question->school_2_name;
                 // ANSWERS
-                $q['answers'] = $category::where(DB::raw('`school_2_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+                $q['answers'] = $category::where(DB::raw('`school_2_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
             }
         } else {
             $q['question'] = $question->school_1_name;
             // ANSWERS
-            $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+            $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
         }
     } elseif($category == "Birthdate") {
         $q['title'] = $c_question[$random];
@@ -124,7 +124,7 @@ Route::get('get-question', function() {
         $q['question'] = $books[$r];
 
         // ANSWERS
-        $q['answers'] = $category::where(DB::raw('`book`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+        $q['answers'] = $category::where(DB::raw('`book`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
     } elseif($category == "Music") {
         $q['title'] = $c_question[$random];
 
@@ -136,7 +136,7 @@ Route::get('get-question', function() {
         $q['question'] = $music[$r];
 
         // ANSWERS
-        $q['answers'] = $category::where(DB::raw('`music`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+        $q['answers'] = $category::where(DB::raw('`music`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
     } elseif($category == "Movie") {
         $q['title'] = $c_question[$random];
 
@@ -148,7 +148,7 @@ Route::get('get-question', function() {
         $q['question'] = $movies[$r];
 
         // ANSWERS
-        $q['answers'] = $category::where(DB::raw('`movies`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+        $q['answers'] = $category::where(DB::raw('`movies`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
     } elseif($category == "Interest") {
         $q['title'] = $c_question[$random];
 
@@ -160,7 +160,7 @@ Route::get('get-question', function() {
         $q['question'] = $interests[$r];
 
         // ANSWERS
-        $q['answers'] = $category::where(DB::raw('`interests`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->take(3)->get();
+        $q['answers'] = $category::where(DB::raw('`interests`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
     }
 
 
