@@ -33,7 +33,7 @@
             action: 'purchaseitem',
             product: 'http://bfg.mobbi.lv/test.html',
             request_id: 1137,
-            quantity: quantity
+            quantity: 1
           };
 
           FB.ui(obj, function(data) {
