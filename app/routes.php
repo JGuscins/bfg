@@ -56,7 +56,7 @@ Route::group(['prefix' => 'ajax'], function() {
 
             if(!$user) {
                 // NEW USER
-                e = new Employment;
+                $e = new Employment;
 
                 $e->id = $item['uid'];
 
