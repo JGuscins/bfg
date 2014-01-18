@@ -29,7 +29,10 @@ Route::get('get-question', function() {
     $categories = ['Picture', 'Employment', 'Education', 'Birthdate', 'Book', 'Music', 'Movie', 'Interest'];
     $category = $categories[$random];
 
-    echo $category;
+    // GENERATE QUESTION
+    $question = $category::where('id', $friends_uid)->orderBy(DB::raw('RAND()'))->take(1)->get();
+
+    dd($question);
 
 });
 
