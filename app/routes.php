@@ -349,6 +349,10 @@ Route::get('login/fb/callback', function() {
  
     $me = $facebook->api('/me');
     $friends = $facebook->api('/me/friends');
+    if (!empty($friends['next'])) while (!empty($friends['next'])) {
+	    $friends_data[] = $friends['data'];
+	    $friends = $facebook->api($friends['next']);
+    } else $friends_data = $friends['data'];
  
     $profile = Profile::whereUid($uid)->first();
 
@@ -363,7 +367,7 @@ Route::get('login/fb/callback', function() {
         $profile = new Profile();
         $profile->uid = $uid;
         $profile->username = $me['username'];
-        $profile->friends = json_encode($friends);
+        $profile->friends = json_encode($friends_data);
         $profile = $user->profiles()->save($profile);
     }
  
