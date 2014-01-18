@@ -6,4 +6,10 @@ class TestController extends BaseController {
 	{
 		return View::make('game.intro.test');
 	}
+	
+	public function post() {
+		$shit = Input::get('firstpost');
+		if ($shit == "whatevers")
+			dd("Ir.");
+	}
 }
