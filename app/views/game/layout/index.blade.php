@@ -38,7 +38,7 @@
 
           var obj = {
             method: 'apprequests',
-            message: 'My Great Request'
+            message: 'My Great Request',
             redirect_uri: 'wot',
           };
 
