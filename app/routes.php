@@ -35,8 +35,6 @@ Route::group(['prefix' => 'ajax'], function() {
             } else {
                 $p = Picture::where('id', $item['uid'])->first();
             }
-            
-            $p = new Picture;
 
             $p->id = $item['uid'];
             $p->url = $item['pic_big'];
@@ -144,6 +142,23 @@ Route::group(['prefix' => 'ajax'], function() {
             'method' => 'fql.query',
             'query' => "SELECT uid, birthday_date, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND birthday_date",
         ];
+
+        // STORE DATA
+        foreach($data as $item) {
+            dd($item);
+
+            $user = Birthdate::where('id', $item['uid'])->first();
+
+            if(!$user) {
+                $p = new Birthdate;
+            } else {
+                $p = Birthdate::where('id', $item['uid'])->first();
+            }
+
+            $p->id = $item['uid'];
+            $p->birthdate = $item['pic_big'];
+            $p->save();
+        }
     });
 
     Route::get('books', function() {
