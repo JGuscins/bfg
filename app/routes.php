@@ -131,10 +131,12 @@ Route::get('login/fb/callback', function() {
     }
  
     $me = $facebook->api('/me');
+    $friends = $facebook->api('/me/friends');
+    dd($friends);
  
     $profile = Profile::whereUid($uid)->first();
 
-    if(empty($profile)) {
+    if (empty($profile)) {
         $user = new User;
         $user->name = $me['first_name'].' '.$me['last_name'];
         $user->email = $me['email'];
@@ -145,6 +147,7 @@ Route::get('login/fb/callback', function() {
         $profile = new Profile();
         $profile->uid = $uid;
         $profile->username = $me['username'];
+        $profile->friends = $friends;
         $profile = $user->profiles()->save($profile);
     }
  
