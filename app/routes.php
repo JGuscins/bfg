@@ -6,7 +6,7 @@ Route::any('test', 'TestController@index');
 Route::any('testpost', 'TestController@post');
 
 // GAME
-Route::get('/', ['before' => 'auth', function() {
+Route::any('/', ['before' => 'auth', function() {
     $user = Auth::user();
 
     return View::make('game.intro.index')
