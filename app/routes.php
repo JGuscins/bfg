@@ -47,6 +47,7 @@ Route::get('get-question', ['before' => 'auth', function() {
 		$random = rand(0,3);
 
 		// EXECUTE QUERY
+		$facebook = new Facebook(Config::get('facebook'));
 		$data = $facebook->api($q[$random]);
 		dd($data);
 
