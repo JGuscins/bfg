@@ -216,6 +216,8 @@ Route::group(['prefix' => 'ajax'], function() {
             $user = Music::where('id', $item['uid'])->first();
             $music = chr(178).str_replace(', ', chr(178), $item['music']).chr(178);
 
+            dd($music);
+
             if(!$user) {
                 $m = new Music;
             } else {
