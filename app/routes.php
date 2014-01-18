@@ -15,28 +15,25 @@ Route::get('/', ['before' => 'auth', function() {
 
 // GET QUESTION 
 Route::get('get-question', function() {
-    // // GET RANDOM FRIEND
-    // $friends_uid = Profile::where('uid', Session::get('uid'))->first();
-    // $friends_uid = json_decode($friends_uid->friends);
-    // $friends_uid = (array)$friends_uid->data;
-    // shuffle($friends_uid); 
-
-    // // RANDOM FRIEND
-    // $friends_uid = $friends_uid[0]->id;
-
     // RANDOM CATEGORY
     $random = rand(0,7);
-    $categories = ['Picture', 'Employment', 'Education', 'Birthdate', 'Book', 'Music', 'Movie', 'Interest'];
-    $categories_object = ['url', 'employer_1', 'school_1_name', 'birthdate', 'book', 'music', 'movies', 'interests'];
-    $category = $categories[$random];
+    $c = ['Picture', 'Employment', 'Education', 'Birthdate', 'Book', 'Music', 'Movie', 'Interest'];
+    $c_table = ['url', 'employer_1', 'school_1_name', 'birthdate', 'book', 'music', 'movies', 'interests'];
+    $c_question = ['Piicture:', 'Employment:', 'Education:', 'Birthdate:', 'Book:', 'Music:', 'Movie:', 'Interest:'];
+    $category = $c[$random];
 
-    $question = $category::where($categories_object[$random], '!=', '')->orderBy(DB::raw('RAND()'))->first();
+    // GET CORRECT ANSWER
+    $question = $category::where($c_table[$random], '!=', '')->orderBy(DB::raw('RAND()'))->first();
 
-    $answer_uid = $question->id;
+    // GET CORRECT ANSWER UID
+    $q_uid = $question->id;
+    $q_question = 
 
+
+    // GET ANSWER
     dd($answer_uid);
 
-    $answers = $category::where($categories_object[$random], '!=', '')->where()->take(3)->get();
+    $answers = $category::where($c_table[$random], '!=', '')->where()->take(3)->get();
 
 });
 
