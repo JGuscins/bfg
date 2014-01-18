@@ -14,8 +14,8 @@ Route::any('/', ['before' => 'auth', function() {
 }]);
 
 Route::get('stop-timer', function() {
-    $price = 1;
-
+    $price = 1; 
+    
     $user = User::find(Auth::user()->id);
 
     if($user->coins >= $price) {
