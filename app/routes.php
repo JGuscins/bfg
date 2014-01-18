@@ -273,18 +273,17 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            dd($item);
-            $user = Movie::where('id', $item['uid'])->first();
+            $user = Interest::where('id', $item['uid'])->first();
 
             if(!$user) {
-                $m = new Movie;
+                $i = new Interest;
             } else {
-                $m = Movie::where('id', $item['uid'])->first();
+                $i = Interest::where('id', $item['uid'])->first();
             }
 
-            $m->id = $item['uid'];
-            $m->movies = $item['movies'];
-            $m->save();
+            $i->id = $item['uid'];
+            $i->interests = $item['interests'];
+            $i->save();
         }
 
     });
