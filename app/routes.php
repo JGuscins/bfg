@@ -213,7 +213,11 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            $musics = explode(', ', $item['music']);
+            // Grafomāns, ATB, Korn, Linkin Park
+
+            $music = str_replace(', ', chr(178), $item['music']);
+            dd($music);
+            // $musics = explode(', ', $item['music']);
 
             foreach($musics as $music) {
                 $user = Music::where('uid', $item['uid'])->where('music', $music)->first();
