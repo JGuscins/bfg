@@ -77,6 +77,8 @@ Route::group(['prefix' => 'ajax'], function() {
                 $e->save();
             } else {
                 // EXISTING USER
+                $e = Employment::where('id', $item['uid'])->first();
+
                 $e->id = $item['uid'];
 
                 if(isset($item['work'][0])) {
