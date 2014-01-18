@@ -51,9 +51,26 @@ Route::group(['prefix' => 'ajax'], function() {
         $data     = $facebook->api($query);
 
         // STORE DATA
-        foreach($data as $employment) {
-            dd($employment);
-            die();
+        foreach($data as $item) {
+            $e = new Employment;
+            $e->id = $item['uid'];
+
+            if(isset($item['work'][0])) {
+                
+                $e->employer_1 = $item['work'][0]['name'];
+            }
+
+            if(isset($item['work'][1)) {
+                $e->id = $item['uid'];
+                $e->employer_1 = $item['work'][1]['name'];
+            }
+
+            if(isset($item['work'][2])) {
+                $e->id = $item['uid'];
+                $e->employer_1 = $item['work'][2]['name'];
+            }
+
+            $e->save();
         }
 
         // RESPOND TO AJAX
