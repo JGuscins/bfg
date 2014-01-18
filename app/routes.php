@@ -63,7 +63,7 @@ Route::get('switch-question', function() {
         $random = rand(0,7);
         $c = ['Picture', 'Employment', 'Education', 'Birthdate', 'Book', 'Music', 'Movie', 'Interest'];
         $c_table = ['url', 'employer_1', 'school_1_name', 'birthdate', 'book', 'music', 'movies', 'interests'];
-        $c_question = ['Piicture:', 'Employment:', 'Education:', 'Birthdate:', 'Book:', 'Music:', 'Movie:', 'Interest:'];
+        $c_question = ['Picture:', 'Employment:', 'Education:', 'Birthdate:', 'Book:', 'Music:', 'Movie:', 'Interest:'];
         $category = $c[$random];
 
         // GET CORRECT ANSWER
@@ -309,7 +309,7 @@ Route::get('get-question', function() {
     $random = rand(0,7);
     $c = ['Picture', 'Employment', 'Education', 'Birthdate', 'Book', 'Music', 'Movie', 'Interest'];
     $c_table = ['url', 'employer_1', 'school_1_name', 'birthdate', 'book', 'music', 'movies', 'interests'];
-    $c_question = ['Piicture:', 'Employment:', 'Education:', 'Birthdate:', 'Book:', 'Music:', 'Movie:', 'Interest:'];
+    $c_question = ['Picture:', 'Employment:', 'Education:', 'Birthdate:', 'Book:', 'Music:', 'Movie:', 'Interest:'];
     $category = $c[$random];
 
     // GET CORRECT ANSWER
