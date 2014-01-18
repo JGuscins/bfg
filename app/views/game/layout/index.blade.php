@@ -43,7 +43,7 @@
 FB.ui({method: 'apprequests',
   message: 'My Great Request',
   to: {user-ids}
-}, requestCallback);
+});
 
         }
 
