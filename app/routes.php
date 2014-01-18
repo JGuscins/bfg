@@ -177,9 +177,11 @@ Route::get('get-question', function() {
 
     $q['answers'] = $a['answers'];
     $q['answers'][] = ['uid' => $q['uid'], 'name' => $q['name'], 'picture' => $q['picture']];
+    
+    // STORE CORRECT UID
+    Session::put('correct_uid', $q['uid']);
 
-    shuffle($q['answers']);
-
+    // RESPOND
     return Response::json($q);
 });
 
