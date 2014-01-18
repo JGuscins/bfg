@@ -176,6 +176,7 @@ Route::get('get-question', function() {
     }
 
     $q['answers'] = $a['answers'];
+    $q['answers'][] = ['uid' => $q['uid'], 'name' => $q['name'], 'picture' => $q['picture']];
 
     dd($q);
 
