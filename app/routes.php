@@ -31,7 +31,8 @@ Route::get('get-question', function() {
     $category = $categories[$random];
 
     // GENERATE QUESTION
-
+    echo $category;
+    echo $friends_uid;
     $question = $category::where('id', $friends_uid)->where($categories_object[$random], '!=', DB::raw('null'))->get();
     dd($question);
 
