@@ -537,12 +537,7 @@ Route::group(['prefix' => 'ajax'], function() {
         foreach($data as $item) {
             $user = Employment::where('id', $item['uid'])->first();
 
-            if(!$user) {
-                $e = new Employment;
-            } else {
-                $e = Employment::where('id', $item['uid'])->first();;
-            }
-
+            $e = $user ? Employment::where('id', $item['uid'])->first() : new Employment;
             $e->id = $item['uid'];
 
             if(isset($item['work'][0])) {
@@ -579,12 +574,7 @@ Route::group(['prefix' => 'ajax'], function() {
         foreach($data as $item) {
             $user = Education::where('id', $item['uid'])->first();
 
-            if(!$user) {
-                $e = new Education;
-            } else {
-                $e =  Education::where('id', $item['uid'])->first();;
-            }
-
+            $e = $user ? Education::where('id', $item['uid'])->first() : new Education;
             $e->id = $item['uid'];
 
             if(isset($item['education'][0])) {
@@ -624,18 +614,13 @@ Route::group(['prefix' => 'ajax'], function() {
         $data     = $facebook->api($query);
 
         // STORE DATA
-        foreach($data as $item) {
+        foreach ($data as $item) {
             $user = Birthdate::where('id', $item['uid'])->first();
-
-            if(!$user) {
-                $p = new Birthdate;
-            } else {
-                $p = Birthdate::where('id', $item['uid'])->first();
-            }
 
             $bday = explode('/', $item['birthday_date']);
             $bday = $bday[0].'/'.$bday[1];
 
+            $p = $user ? Birthdate::where('id', $item['uid'])->first() : new Birthdate;
             $p->id = $item['uid'];
             $p->birthdate = $bday;
             $p->save();
@@ -657,15 +642,10 @@ Route::group(['prefix' => 'ajax'], function() {
         $data     = $facebook->api($query);
 
         // STORE DATA
-        foreach($data as $item) {
+        foreach ($data as $item) {
             $user = Book::where('id', $item['uid'])->first();
 
-            if(!$user) {
-                $b = new Book;
-            } else {
-                $b = Book::where('id', $item['uid'])->first();
-            }
-
+            $b = $user ? Book::where('id', $item['uid'])->first() : new Book;
             $b->id = $item['uid'];
             $b->book = $item['books'];
             $b->save();
@@ -690,12 +670,7 @@ Route::group(['prefix' => 'ajax'], function() {
         foreach($data as $item) {
             $user = Music::where('id', $item['uid'])->first();
 
-            if(!$user) {
-                $m = new Music;
-            } else {
-                $m = Music::where('id', $item['uid'])->first();
-            }
-
+            $m = $user ? Music::where('id', $item['uid'])->first() : new Music;
             $m->id = $item['uid'];
             $m->music = $item['music'];
             $m->save();
@@ -718,15 +693,10 @@ Route::group(['prefix' => 'ajax'], function() {
         $data     = $facebook->api($query);
 
         // STORE DATA
-        foreach($data as $item) {
+        foreach ($data as $item) {
             $user = Movie::where('id', $item['uid'])->first();
 
-            if(!$user) {
-                $m = new Movie;
-            } else {
-                $m = Movie::where('id', $item['uid'])->first();
-            }
-
+            $m = $user ? Movie::where('id', $item['uid'])->first() : new Movie;
             $m->id = $item['uid'];
             $m->movies = $item['movies'];
             $m->save();
@@ -748,15 +718,10 @@ Route::group(['prefix' => 'ajax'], function() {
         $data     = $facebook->api($query);
 
         // STORE DATA
-        foreach($data as $item) {
+        foreach ($data as $item) {
             $user = Interest::where('id', $item['uid'])->first();
 
-            if(!$user) {
-                $i = new Interest;
-            } else {
-                $i = Interest::where('id', $item['uid'])->first();
-            }
-
+            $i = $user ? Interest::where('id', $item['uid'])->first() : new Interest;
             $i->id = $item['uid'];
             $i->interests = $item['interests'];
             $i->save();
