@@ -27,6 +27,8 @@ Route::get('get-question', ['before' => 'auth', function() {
         'method' => 'fql.query',
         'query' => "SELECT uid, work, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND work LIMIT 4",
     ];
+    
+    dd($q[1]);
 
     // EDUCATION
 	$q[2] = [
