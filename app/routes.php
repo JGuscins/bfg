@@ -180,6 +180,7 @@ Route::get('switch-question', function() {
     $q['answers'] = $a['answers'];
     $q['answers'][] = ['uid' => $q['uid'], 'name' => $q['name'], 'picture' => $q['picture']];
     $q['coins'] = $user->coins;
+    $q['points'] = $user->points;
     
     // STORE CORRECT UID
     Session::put('correct_uid', $q['uid']);
@@ -415,6 +416,7 @@ Route::get('get-question', function() {
     $q['answers'] = $a['answers'];
     $q['answers'][] = ['uid' => $q['uid'], 'name' => $q['name'], 'picture' => $q['picture']];
     $q['coins'] = $user->coins;
+    $q['points'] = $user->points;
     
     // STORE CORRECT UID
     Session::put('correct_uid', $q['uid']);
