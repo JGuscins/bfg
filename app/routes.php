@@ -31,20 +31,16 @@ Route::group(['prefix' => 'ajax'], function() {
             $user = Picture::where('id', $item['uid'])->first();
 
             if(!$user) {
-                // NEW USER
                 $p = new Picture;
-
-                $p->id = $item['uid'];
-                $p->url = $item['pic_big'];
-                $p->save();
             } else {
-                // EXISTING USER
                 $p = Picture::where('id', $item['uid'])->first();
-
-                $p->id = $item['uid'];
-                $p->url = $item['pic_big'];
-                $p->save();
             }
+            
+            $p = new Picture;
+
+            $p->id = $item['uid'];
+            $p->url = $item['pic_big'];
+            $p->save();
         }
 
         // RESPOND TO AJAX
@@ -68,44 +64,26 @@ Route::group(['prefix' => 'ajax'], function() {
             $user = Employment::where('id', $item['uid'])->first();
 
             if(!$user) {
-                // NEW USER
                 $e = new Employment;
-
-                $e->id = $item['uid'];
-
-                if(isset($item['work'][0])) {
-                    $e->employer_1 = $item['work'][0]['employer']['name'];
-                }
-
-                if(isset($item['work'][1])) {
-                    $e->employer_2 = $item['work'][1]['employer']['name'];
-                }
-
-                if(isset($item['work'][2])) {
-                    $e->employer_3 = $item['work'][2]['employer']['name'];
-                }
-
-                $e->save();
             } else {
-                // EXISTING USER
-                $e = Employment::where('id', $item['uid'])->first();
-
-                $e->id = $item['uid'];
-
-                if(isset($item['work'][0])) {
-                    $e->employer_1 = $item['work'][0]['employer']['name'];
-                }
-
-                if(isset($item['work'][1])) {
-                    $e->employer_2 = $item['work'][1]['employer']['name'];
-                }
-
-                if(isset($item['work'][2])) {
-                    $e->employer_3 = $item['work'][2]['employer']['name'];
-                }
-
-                $e->save();    
+                $e = Employment::where('id', $item['uid'])->first();;
             }
+
+            $e->id = $item['uid'];
+
+            if(isset($item['work'][0])) {
+                $e->employer_1 = $item['work'][0]['employer']['name'];
+            }
+
+            if(isset($item['work'][1])) {
+                $e->employer_2 = $item['work'][1]['employer']['name'];
+            }
+
+            if(isset($item['work'][2])) {
+                $e->employer_3 = $item['work'][2]['employer']['name'];
+            }
+
+            $e->save();
         }
 
         // RESPOND TO AJAX
@@ -128,56 +106,32 @@ Route::group(['prefix' => 'ajax'], function() {
             $user = Education::where('id', $item['uid'])->first();
 
             if(!$user) {
-                // NEW USER
                 $e = new Education;
-
-                $e->id = $item['uid'];
-
-                if(isset($item['education'][0])) {
-                    $e->school_1_name = $item['education'][0]['school']['name'];
-                    $e->school_1_id = $item['education'][0]['school']['id'];
-                    $e->school_1_type = $item['education'][0]['type'];
-                }
-
-                if(isset($item['education'][1])) {
-                    $e->school_2_name = $item['education'][1]['school']['name'];
-                    $e->school_2_id = $item['education'][1]['school']['id'];
-                    $e->school_2_type = $item['education'][1]['type'];
-                }
-
-                if(isset($item['education'][2])) {
-                    $e->school_3_name = $item['education'][2]['school']['name'];
-                    $e->school_3_id = $item['education'][2]['school']['id'];
-                    $e->school_3_type = $item['education'][2]['type'];
-                }
-
-                $e->save();
             } else {
-                // EXISTING USER
-                $e = Education::where('id', $item['uid'])->first();
-
-                $e->id = $item['uid'];
-
-                if(isset($item['education'][0])) {
-                    $e->school_1_name = $item['education'][0]['school']['name'];
-                    $e->school_1_id = $item['education'][0]['school']['id'];
-                    $e->school_1_type = $item['education'][0]['type'];
-                }
-
-                if(isset($item['education'][1])) {
-                    $e->school_2_name = $item['education'][1]['school']['name'];
-                    $e->school_2_id = $item['education'][1]['school']['id'];
-                    $e->school_2_type = $item['education'][1]['type'];
-                }
-
-                if(isset($item['education'][2])) {
-                    $e->school_3_name = $item['education'][2]['school']['name'];
-                    $e->school_3_id = $item['education'][2]['school']['id'];
-                    $e->school_3_type = $item['education'][2]['type'];
-                }
-
-                $e->save();    
+                $e =  Education::where('id', $item['uid'])->first();;
             }
+
+            $e->id = $item['uid'];
+
+            if(isset($item['education'][0])) {
+                $e->school_1_name = $item['education'][0]['school']['name'];
+                $e->school_1_id = $item['education'][0]['school']['id'];
+                $e->school_1_type = $item['education'][0]['type'];
+            }
+
+            if(isset($item['education'][1])) {
+                $e->school_2_name = $item['education'][1]['school']['name'];
+                $e->school_2_id = $item['education'][1]['school']['id'];
+                $e->school_2_type = $item['education'][1]['type'];
+            }
+
+            if(isset($item['education'][2])) {
+                $e->school_3_name = $item['education'][2]['school']['name'];
+                $e->school_3_id = $item['education'][2]['school']['id'];
+                $e->school_3_type = $item['education'][2]['type'];
+            }
+
+            $e->save();    
         }
 
         // RESPOND TO AJAX
