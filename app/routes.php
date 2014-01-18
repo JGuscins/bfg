@@ -56,7 +56,7 @@ Route::group(['prefix' => 'ajax'], function() {
             $e->id = $item['uid'];
 
             if(isset($item['work'][0])) {
-                
+                dd($item['work']);
                 $e->employer_1 = $item['work'][0]['name'];
             }
 
