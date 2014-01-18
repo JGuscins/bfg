@@ -39,6 +39,7 @@
           var obj = {
             method: 'apprequests',
             message: 'My Great Request'
+            redirect_uri: 'wot',
           };
 
           FB.ui(obj, function(data) {
