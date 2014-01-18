@@ -30,8 +30,8 @@
         function buy() {
           var obj = {
             method: 'pay',
-            action: 'purchaseitem',
-            product: 'YOUR_PRODUCT_URL'
+            order_info: 'order_info',
+            purchase_type: 'item'
           };
 
           FB.ui(obj, function(data) {
