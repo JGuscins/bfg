@@ -28,10 +28,23 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            $p = new Picture;
-            $p->id = $item['uid'];
-            $p->url = $item['pic_big'];
-            $p->save();
+            $user = Picture::where('id', $item['uid'])->first();
+
+            if(!$user) {
+                // NEW USER
+                $p = new Picture;
+
+                $p->id = $item['uid'];
+                $p->url = $item['pic_big'];
+                $p->save();
+            } else {
+                // EXISTING USER
+                $p = Picture::where('id', $item['uid'])->first();
+
+                $p->id = $item['uid'];
+                $p->url = $item['pic_big'];
+                $p->save();
+            }
         }
 
         // RESPOND TO AJAX
