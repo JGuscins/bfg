@@ -253,8 +253,6 @@ Route::get('get-question', function() {
         Session::put('step', 1);
     }
 
-    return Session::get('step');
-
     // RESPOND
     return Response::json($q);
 });
