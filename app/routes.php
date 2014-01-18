@@ -13,6 +13,17 @@ Route::get('/', ['before' => 'auth', function() {
             ->with('user', $user);
 }]);
 
+// CHECK ANSWER
+Route::get('check-answer', function() {
+    $uid = Input::get('uid');
+
+    if($uid == Session::get('correct_uid')) {
+        return Response::json('true');
+    } else {
+        return Response::json('false');
+    }
+});
+
 // GET QUESTION 
 Route::get('get-question', function() {
     // RANDOM CATEGORY
