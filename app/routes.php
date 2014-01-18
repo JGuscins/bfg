@@ -126,8 +126,6 @@ Route::get('login/fb/callback', function() {
  
     $facebook = new Facebook(Config::get('facebook'));
     $uid = $facebook->getUser();
-    $access = $facebook->getUrl('graph', '/oauth/access_token');
-    dd($access);
  
     if($uid == 0) {
     	return Redirect::to('/')
@@ -154,7 +152,9 @@ Route::get('login/fb/callback', function() {
         $profile = $user->profiles()->save($profile);
     }
  
+    $facebook->setExtendedAccessToken();
     $profile->access_token = $facebook->getAccessToken();
+    dd($profile->access_token);
     $profile->save();
  
     $user = $profile->user;
