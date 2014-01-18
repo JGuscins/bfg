@@ -56,18 +56,17 @@ Route::group(['prefix' => 'ajax'], function() {
             $e->id = $item['uid'];
 
             if(isset($item['work'][0])) {
-                dd($item['work']);
-                $e->employer_1 = $item['work'][0]['name'];
+                $e->employer_1 = $item['work'][0]['employer']['name'];
             }
 
             if(isset($item['work'][1])) {
                 $e->id = $item['uid'];
-                $e->employer_1 = $item['work'][1]['name'];
+                $e->employer_1 = $item['work'][1]['employer']['name'];
             }
 
             if(isset($item['work'][2])) {
                 $e->id = $item['uid'];
-                $e->employer_1 = $item['work'][2]['name'];
+                $e->employer_1 = $item['work'][2]['employer']['name'];
             }
 
             $e->save();
