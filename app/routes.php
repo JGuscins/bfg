@@ -17,7 +17,9 @@ Route::get('/', ['before' => 'auth', function() {
 Route::get('get-question', function() {
     $friends = Profile::where('uid', Session::get('uid'))->first();
     $friends = json_decode($friends->friends);
-    $friends = shuffle($friends->data);
+    $friends = (array)$friends->data;
+    shuffle($friends);
+
     dd($friends);
 
 });
