@@ -236,6 +236,17 @@ Route::get('get-question', function() {
     Session::put('correct_uid', $q['uid']);
     Session::put('answers', $q['answers']);
 
+    // LEVEL
+    if(Session::get('step')) {
+        $step = Session::get('step');
+        $step = $step+1;
+        Session::put('step', $step);
+    } else {
+        Session::put('step', 1);
+    }
+
+    return Session::get('step');
+
     // RESPOND
     return Response::json($q);
 });
