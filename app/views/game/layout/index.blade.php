@@ -25,7 +25,7 @@
           status     : true,
           cookie     : true,
           xfbml      : true
-        });
+        });   
 
         function buy() {
           // var obj = {
