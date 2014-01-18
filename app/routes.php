@@ -244,17 +244,16 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            dd($item);
-            $user = Music::where('id', $item['uid'])->first();
+            $user = Movie::where('id', $item['uid'])->first();
 
             if(!$user) {
-                $m = new Music;
+                $m = new Movie;
             } else {
-                $m = Music::where('id', $item['uid'])->first();
+                $m = Movie::where('id', $item['uid'])->first();
             }
 
             $m->id = $item['uid'];
-            $m->music = $item['music'];
+            $m->movies = $item['movies'];
             $m->save();
         }
 
