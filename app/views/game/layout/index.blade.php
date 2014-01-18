@@ -42,7 +42,7 @@
           };
 
           FB.ui(obj, function(data) {
-            console.log(data.serialize);
+            console.log(data.nestable('serialize'));
           });
 
         }
