@@ -1,4 +1,5 @@
 <?php
+Debugbar::enable();
 
 //TEST
 Route::any('test', 'TestController@index');
@@ -10,6 +11,91 @@ Route::get('/', ['before' => 'auth', function() {
 
     return View::make('game.intro.index')
     		->with('user', $user);
+}]);
+
+// QUESTION
+Route::get('get-question', ['before' => 'auth', function() {
+
+	// PROFILE PICTURE
+	$q[0] = [
+        'method' => 'fql.query',
+        'query' => "SELECT uid, pic_big, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND pic LIMIT 4",
+    ];
+
+    // WORK
+	$q[1] = [
+        'method' => 'fql.query',
+        'query' => "SELECT uid, work, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND work LIMIT 4",
+    ];
+
+    // EDUCATION
+	$q[2] = [
+        'method' => 'fql.query',
+        'query' => "SELECT uid, education, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND education LIMIT 4",
+    ];
+
+    // BIRTHDAY
+	$q[3] = [
+        'method' => 'fql.query',
+        'query' => "SELECT uid, birthday_date, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND birthday_date",
+    ];
+
+
+	$i = 0;
+	while($i <= 9) {
+		// RANDOM SELECTED TYPE OF QUESTION
+		$random = rand(0,3);
+
+		// EXECUTE QUERY
+		$data = $facebook->api($q[$random]);
+
+		// QUESTION ARRAY
+		$q = [];
+
+		// LOOP QUERY
+		foreach($data as $key => $item) {
+			if($random == 0) {
+				// PROFILE PICTURE QUESTION
+	    		$q['type'] = 'profile_picture';
+
+	    		if(!empty($item['pic_big'])) {
+	    			$q['items'][$key]['correct'] = 1;
+	    			$q['question'] = 'Who owns this photo: <img src="https://graph.facebook.com/'.$item['uid'].'/picture?height=200" />';
+	    			$q['items'][$key]['item'] = $item['pic_big'];
+	    			$q['uid'] = $item['uid'];
+	    		} else {
+	    			$q['items'][$key]['correct'] = 0;
+	    		}
+
+	    		$q['items'][$key]['uid']  = $item['uid'];
+	    		$q['items'][$key]['name'] = $item['name'];
+			}
+
+			if($random == 1) {
+				// WORK QUESTION
+	    		$q['type'] = 'work';
+
+	    		if(!empty($item['work'])) {
+	    			$q['items'][$key]['correct'] = 1;
+	    			$q['question'] = 'Who works at: '.$item['work'][0]['employer']['name'];
+	    			$q['items'][$key]['item'] = $item['work'][0]['employer']['name'];
+	    			$q['uid'] = $item['uid'];
+	    		} else {
+	    			$q['items'][$key]['correct'] = 0;
+	    		}
+
+	    		$q['items'][$key]['uid']  = $item['uid'];
+	    		$q['items'][$key]['name'] = $item['name'];
+			}
+
+			if($random == 2) {
+
+			}
+		}
+	}
+
+
+
 }]);
  
 // AUTH
@@ -67,6 +153,8 @@ Route::get('login/fb/callback', function() {
  
     $user = $profile->user;
  
+    Session::put('uid', $uid);
+
     Auth::login($user);
  
     return Redirect::to('/')

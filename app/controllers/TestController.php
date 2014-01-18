@@ -9,7 +9,7 @@ class TestController extends BaseController {
 	
 	public function post() {
 		$shit = Input::get('firstpost');
-		if ($shit == "whatevers")
-			dd("Ir.");
+		if (!empty($shit))
+			App::abort(404);
 	}
 }
