@@ -246,13 +246,8 @@ Route::get('50-50', function() {
         $answers = Session::get('answers');
         $correct = Session::get('correct_uid');
 
-        foreach($answers as $item) {
-            if($item['uid'] == $correct) {
-                unset($item);
-            } else {
-                $q[] = $item;
-            }
-        }
+        foreach($answers as $item)
+	        $item['uid'] == $correct ? unset($item) : $q[] = $item;
 
         shuffle($q);
 
@@ -506,12 +501,7 @@ Route::group(['prefix' => 'ajax'], function() {
         foreach($data as $item) {
             $user = Picture::where('id', $item['uid'])->first();
 
-            if(!$user) {
-                $p = new Picture;
-            } else {
-                $p = Picture::where('id', $item['uid'])->first();
-            }
-
+            $p = $user ? Picture::where('id', $item['uid'])->first() : new Picture;
             $p->id = $item['uid'];
             $p->url = $item['pic_big'];
             $p->save();
@@ -540,17 +530,14 @@ Route::group(['prefix' => 'ajax'], function() {
             $e = $user ? Employment::where('id', $item['uid'])->first() : new Employment;
             $e->id = $item['uid'];
 
-            if(isset($item['work'][0])) {
+            if(isset($item['work'][0]))
                 $e->employer_1 = $item['work'][0]['employer']['name'];
-            }
 
-            if(isset($item['work'][1])) {
+            if(isset($item['work'][1]))
                 $e->employer_2 = $item['work'][1]['employer']['name'];
-            }
 
-            if(isset($item['work'][2])) {
+            if(isset($item['work'][2]))
                 $e->employer_3 = $item['work'][2]['employer']['name'];
-            }
 
             $e->save();
         }
