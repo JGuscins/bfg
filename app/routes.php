@@ -30,7 +30,7 @@ Route::get('get-question', function() {
     $categories_object = ['url', 'employer_1', 'school_1_name', 'birthdate', 'book', 'music', 'movies', 'interests'];
     $category = $categories[$random];
 
-    $question = $category::where($categories_object[$random], '!=', '')->get();
+    $question = $category::where($categories_object[$random], '!=', '')->take(1)->get();
     dd($question);
 
 });
