@@ -20,7 +20,7 @@ Route::get('get-question', function() {
     $friends = (array)$friends->data;
     shuffle($friends);
 
-    dd($friends);
+    dd($friends[0]);
 
 });
 
