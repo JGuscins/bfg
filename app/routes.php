@@ -25,7 +25,13 @@ Route::group(['prefix' => 'ajax'], function() {
         // FACEBOOK
         $facebook = new Facebook(Config::get('facebook'));
         $data = $facebook->api($query);
-        dd($data);
+
+        foreach($data as $item) {
+            $p = new Picture;
+            $p->id = $item->uid;
+            $p->url = $item->pic_big;
+            $p->save();
+        }
     });
 
     Route::get('work', function() {
