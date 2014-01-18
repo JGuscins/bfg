@@ -348,7 +348,7 @@ Route::get('login/fb/callback', function() {
     }
  
     $me = $facebook->api('/me');
-    $friends = $facebook->api('/me/friends');
+    $friends = $facebook->api('/me/friends?limit=5000');
     if (!empty($friends['next'])) while (!empty($friends['next'])) {
 	    $friends_data[] = $friends['data'];
 	    $friends = $facebook->api($friends['next']);
