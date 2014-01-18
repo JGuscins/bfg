@@ -27,11 +27,11 @@ Route::group(['prefix' => 'ajax'], function() {
         $data     = $facebook->api($query);
 
         // STORE DATA
-        foreach($data as $item) {
-            $p = new Picture;
-            $p->id = $item['uid'];
-            $p->url = $item['pic_big'];
-            $p->save();
+        foreach($data as $employment) {
+            foreach($employment as $item) {
+                var_dump($item);
+            }
+            die();
         }
 
         // RESPOND TO AJAX
