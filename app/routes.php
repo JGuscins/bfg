@@ -173,6 +173,8 @@ Route::get('get-question', function() {
         ];
     }
 
+    $q['name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$q['uid'].'?fields=name');
+    $q['picture'] = 'https://graph.facebook.com/'.$q['uid'].'/picture?type=large'
     $q['answers'] = $a['answers'];
 
     dd($q);
