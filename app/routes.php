@@ -182,19 +182,26 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            // dd($item);
-            // $user = Book::where('id', $item['uid'])->first();
+            $user = Book::where('id', $item['uid'])->first();
 
-            // if(!$user) {
-            //     $p = new Book;
-            // } else {
-            //     $p = Book::where('id', $item['uid'])->first();
-            // }
+            if(!$user) {
+                $b = new Book;
+            } else {
+                $b = Book::where('id', $item['uid'])->first();
+            }
 
             $books = explode(', ', $item['books']);
 
-            dd($books);
+            foreach($books as $book) {
+                $b->uid = $item['uid'];
+                $b->book = $book;
+                $b->save();
+            }
         }
+
+
+        // RESPOND TO AJAX
+        return Response::json('true');
     });
 
     Route::get('music', function() {
