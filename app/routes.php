@@ -173,7 +173,7 @@ Route::get('get-question', function() {
         echo 'Wrong user id: '.$answer['id'].'<br>';
     }
 
-    dd($q)
+    dd($q);
 
     die();
 
