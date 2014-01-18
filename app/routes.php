@@ -22,16 +22,20 @@ Route::group(['prefix' => 'ajax'], function() {
             'query' => "SELECT uid, pic_big, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND pic",
         ];
 
-        // FACEBOOK
+        // FACEBOOK DATA
         $facebook = new Facebook(Config::get('facebook'));
-        $data = $facebook->api($query);
+        $data     = $facebook->api($query);
 
+        // STORE DATA
         foreach($data as $item) {
             $p = new Picture;
             $p->id = $item['uid'];
             $p->url = $item['pic_big'];
             $p->save();
         }
+
+        // RESPOND TO AJAX
+        return Response::json('true');
     });
 
     Route::get('work', function() {
@@ -40,6 +44,23 @@ Route::group(['prefix' => 'ajax'], function() {
             'method' => 'fql.query',
             'query' => "SELECT uid, work, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND work",
         ];
+
+
+        // FACEBOOK DATA
+        $facebook = new Facebook(Config::get('facebook'));
+        $data     = $facebook->api($query);
+
+        // STORE DATA
+        foreach($data as $item) {
+            dd($data);
+            $p = new Employment;
+            $p->id = $item['uid'];
+            $p->url = $item['pic_big'];
+            $p->save();
+        }
+
+        // RESPOND TO AJAX
+        return Response::json('true');
     }); 
 
     Route::get('education', function() {
