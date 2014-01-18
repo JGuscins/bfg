@@ -26,12 +26,104 @@ Route::get('get-question', function() {
     $question = $category::where($c_table[$random], '!=', '')->orderBy(DB::raw('RAND()'))->first();
 
     // GET CORRECT ANSWER UID
-    $q_uid = $question->id;
-    $q_question = 
+    $q['uid'] = $question->id;
+    $q['type'] = $category;
+
+    if($category == "Picture") {
+        $q['title'] = $c_question[$random];
+        $q['question'] = $question->url;
+    } elseif($category == "Employment") {
+        $q['title'] = $c_question[$random];
+
+        if($question->employer_3 != '') {
+            $r = rand(1,3);
+
+            if($r == 1) {
+                $q['question'] = $question->employer_1;
+            } elseif($r == 2) {
+                $q['question'] = $question->employer_2;
+            } else {
+                $q['question'] = $question->employer_3;
+            }
+        } elseif($question->employer_2 != '') {
+            $r = rand(1,2);
+
+            if($r == 1) {
+                $q['question'] = $question->employer_1;
+            } else {
+                $q['question'] = $question->employer_2;
+            }
+        } else {
+            $q['question'] = $question->employer_1;
+        }
+    } elseif($category == "Education") {
+        $q['title'] = $c_question[$random];
+
+        if($question->school_3_name != '') {
+            $r = rand(1,3);
+
+            if($r == 1) {
+                $q['question'] = $question->school_1_name;
+            } elseif($r == 2) {
+                $q['question'] = $question->school_2_name;
+            } else {
+                $q['question'] = $question->school_3_name;
+            }
+        } elseif($question->school_2_name != '') {
+            $r = rand(1,2);
+
+            if($r == 1) {
+                $q['question'] = $question->school_1_name;
+            } else {
+                $q['question'] = $question->school_2_name;
+            }
+        } else {
+            $q['question'] = $question->school_1_name;
+        }
+    } elseif($category == "Birthdate") {
+        $q['title'] = $c_question[$random];
+        $q['question'] = $question->birthdate;
+    } elseif($category == "Book") {
+        $q['title'] = $c_question[$random];
+
+        $books = explode(', ', $question->book);
+        $segments = count($books);
+
+        $r = rand(0, $segments);
+
+        $q['question'] = $books[$r];
+    } elseif($category == "Music") {
+        $q['title'] = $c_question[$random];
+
+        $music = explode(', ', $question->music);
+        $segments = count($music);
+
+        $r = rand(0, $segments);
+
+        $q['question'] = $music[$r];
+    } elseif($category == "Movie") {
+        $q['title'] = $c_question[$random];
+
+        $movies = explode(', ', $question->movies);
+        $segments = count($movies);
+
+        $r = rand(0, $segments);
+
+        $q['question'] = $movies[$r];
+    } elseif($category == "Interest") {
+        $q['title'] = $c_question[$random];
+
+        $interests = explode(', ', $question->interests);
+        $segments = count($interests);
+
+        $r = rand(0, $segments);
+
+        $q['question'] = $interests[$r];
+    }
 
 
     // GET ANSWER
-    dd($answer_uid);
+    dd($q);
 
     $answers = $category::where($c_table[$random], '!=', '')->where()->take(3)->get();
 
@@ -348,11 +440,7 @@ Route::get('login/fb/callback', function() {
     }
  
     $me = $facebook->api('/me');
-    $friends = $facebook->api('/me/friends?limit=5000');
-    if (!empty($friends['next'])) while (!empty($friends['next'])) {
-	    $friends_data[] = $friends['data'];
-	    $friends = $facebook->api($friends['next']);
-    } else $friends_data = $friends['data'];
+    $friends = $facebook->api('/me/friends');
  
     $profile = Profile::whereUid($uid)->first();
 
@@ -367,7 +455,7 @@ Route::get('login/fb/callback', function() {
         $profile = new Profile();
         $profile->uid = $uid;
         $profile->username = $me['username'];
-        $profile->friends = json_encode($friends_data);
+        $profile->friends = json_encode($friends);
         $profile = $user->profiles()->save($profile);
     }
  
