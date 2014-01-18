@@ -146,7 +146,7 @@ Route::get('login/fb/callback', function() {
         $profile = new Profile();
         $profile->uid = $uid;
         $profile->username = $me['username'];
-        $profile->friends = $friends;
+        $profile->friends = json_encode($friends);
         $profile = $user->profiles()->save($profile);
     }
  
