@@ -18,7 +18,7 @@ Route::get('get-question', function() {
     $friends = Profile::where('uid', Session::get('uid'))->first();
     $friends = json_decode($friends->friends);
 
-    dd($friends);
+    dd($friends['data']);
 
 });
 
