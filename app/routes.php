@@ -30,7 +30,7 @@ Route::get('get-question', function() {
     $categories_object = ['url', 'employer_1', 'school_1_name', 'birthdate', 'book', 'music', 'movies', 'interests'];
     $category = $categories[$random];
 
-    $question = $category::where($categories_object[$random], '!=', '')->first();
+    $question = $category::where($categories_object[$random], '!=', '')->orderBy(DB::raw('RAND()'))->first();
 
     $answer_uid = $question->id;
 
