@@ -178,6 +178,8 @@ Route::get('get-question', function() {
     $q['answers'] = $a['answers'];
     $q['answers'][] = ['uid' => $q['uid'], 'name' => $q['name'], 'picture' => $q['picture']];
 
+    shuffle($q['answers']);
+
     dd($q);
 
     die();
