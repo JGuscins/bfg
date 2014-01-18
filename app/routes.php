@@ -214,7 +214,7 @@ Route::group(['prefix' => 'ajax'], function() {
         // STORE DATA
         foreach($data as $item) {
             $user = Music::where('id', $item['uid'])->first();
-            $music = chr(178).str_replace(', ', chr(178), $item['music']).chr(178);
+            $music = chr(255).str_replace(', ', chr(178), $item['music']).chr(255);
 
             dd($music);
 
