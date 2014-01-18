@@ -240,7 +240,7 @@ Route::get('get-question', function() {
     if(Session::get('step')) {
         $step = Session::get('step');
         if($step == 10) {
-            Session::forget('step');
+            Session::put('step', 1);
         } else {
             $step = $step+1;
             Session::put('step', $step);
