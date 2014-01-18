@@ -1,5 +1,5 @@
 @extends('game.layout.index')
 
 @section('content')
-	yolo
+	{{ Form::open(array('url' => 'foo/bar', 'method' => 'PUT')); }}
 @stop
