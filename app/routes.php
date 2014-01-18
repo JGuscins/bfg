@@ -19,7 +19,7 @@ Route::get('stop-timer', function() {
     $profile = Profile::where('uid', Session::get('uid'))->first();
     $user = User::where('id', $profile->user_id)->first();
 
-    if($user->coins => $price) {
+    if($user->coins >= $price) {
         $coins = $user->coins
         $user->coins = $coins-$price;
         $user->save();
@@ -37,7 +37,7 @@ Route::get('switch-question', function() {
     $q['coins'] = $user->coins;
     $q['points'] = $user->points;
 
-    if($user->coins => $price) {
+    if($user->coins >= $price) {
         $coins = $user->coins
         $user->coins = $coins-$price;
         $user->save();
@@ -224,7 +224,7 @@ Route::get('50-50', function() {
     $profile = Profile::where('uid', Session::get('uid'))->first();
     $user = User::where('id', $profile->user_id)->first();
 
-    if($user->coins => $price) {
+    if($user->coins >= $price) {
         $coins = $user->coins
         $user->coins = $coins-$price;
         $user->save();
