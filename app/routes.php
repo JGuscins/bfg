@@ -125,7 +125,6 @@ Route::get('login/fb/callback', function() {
     }
  
     $facebook = new Facebook(Config::get('facebook'));
-    $facebook->setAccessToken("CAAH5ZBZCG8CIUBALSlFM3f50lbfzUo9KYkWmPZAEYZCOy8CmxbBsVDVTuMJ4ZCzeKv9aljvc4aR8gEvWxsOwg4GNSUM4uZAJpZC851hNZB2CSFpE0sDEUu5C3VoxcIbfgRcG3SW8ie0Ub0mMgDG9F3sWCsE3SeC0ZBAwmeSQAvyYat2tZAQyJUie7c7I0ZC7KwPvlwZD");
     $uid = $facebook->getUser();
  
     if($uid == 0) {
@@ -134,7 +133,6 @@ Route::get('login/fb/callback', function() {
     }
  
     $me = $facebook->api('/me');
-    dd($me);
     $friends = $facebook->api('/me/friends');
  
     $profile = Profile::whereUid($uid)->first();
