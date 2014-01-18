@@ -170,9 +170,12 @@ Route::get('get-question', function() {
     echo 'Question: '.$q['question'].'<br>';
     echo 'Anwsers: <br>';
     foreach($q['answers'] as $answer) {
-        $a['answers'][] = ['uid' => $answer['id'], 'name' => 'x', 'picture' => 'x'];
+        $user = Profile::where('uid', $answer['id'])->first();
+        $user = User::find($user->user_id);
+
+        $a['answers'][] = ['uid' => $answer['id'], 'name' => $user->name, 'picture' => $user->photo];
     }
-    
+
     $q['answers'] = $a['answers'];
 
     dd($q);
