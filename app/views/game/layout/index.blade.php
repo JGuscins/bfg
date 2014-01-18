@@ -28,17 +28,23 @@
         });
 
         function buy() {
-          var obj = {
-            method: 'pay',
-            action: 'purchaseitem',
-            product: 'http://bfg.mobbi.lv/test.html',
-            request_id: 1137,
-            quantity: 1
-          };
+          // var obj = {
+          //   method: 'pay',
+          //   action: 'purchaseitem',
+          //   product: 'http://bfg.mobbi.lv/test.html',
+          //   request_id: 1137,
+          //   quantity: 1
+          // };
 
-          FB.ui(obj, function(data) {
-              console.log(data);
-            });
+          // FB.ui(obj, function(data) {
+          //     console.log(data);
+          //   });
+
+FB.ui({method: 'apprequests',
+  message: 'My Great Request',
+  to: {user-ids}
+}, requestCallback);
+
         }
 
 
