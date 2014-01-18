@@ -13,6 +13,23 @@ Route::get('/', ['before' => 'auth', function() {
             ->with('user', $user);
 }]);
 
+Route::get('50-50', function() {
+    $answers = Session::get('answers');
+    $correct = Session::get('correct_uid');
+
+    foreach($answers as $item) {
+        if($item->uid == $correct) {
+            unset($item);
+        } else {
+            $q[] = $item;
+        }
+    }
+
+    shuffle($q);
+
+    return Response::json([$q[0]['uid'], $q[1]['uid']]);
+});
+
 // CHECK ANSWER
 Route::get('check-answer', function() {
     $uid = Input::get('uid');
@@ -31,7 +48,6 @@ Route::get('check-answer', function() {
             $a->increment('correct');
         }
 
-
         return Response::json('true');
     } else {
         $answer = Answer::where('user', Session::get('uid'))->where('friend', $uid)->first();
@@ -47,7 +63,7 @@ Route::get('check-answer', function() {
             $a->increment('wrong');
         }
 
-        return Response::json('false');
+        return Response::json(Session::get('correct_uid'));
     }
 });
 
@@ -218,6 +234,7 @@ Route::get('get-question', function() {
     
     // STORE CORRECT UID
     Session::put('correct_uid', $q['uid']);
+    Session::put('answers', $q['answers']);
 
     // RESPOND
     return Response::json($q);
