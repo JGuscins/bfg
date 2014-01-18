@@ -159,8 +159,11 @@ Route::group(['prefix' => 'ajax'], function() {
                 $p = Birthdate::where('id', $item['uid'])->first();
             }
 
+            $bday = explode('/', $item['birthday_date']);
+            $bday = $bday[0].'/'.$bday[1];
+
             $p->id = $item['uid'];
-            $p->birthdate = $item['pic_big'];
+            $p->birthdate = $bday;
             $p->save();
         }
     });
