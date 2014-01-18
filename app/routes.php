@@ -199,7 +199,6 @@ Route::group(['prefix' => 'ajax'], function() {
             }
         }
 
-
         // RESPOND TO AJAX
         return Response::json('true');
     });
