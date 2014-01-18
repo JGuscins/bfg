@@ -3,7 +3,7 @@
 @section('content')
     Hello, {{{ $user['name'] }}} 
     <br>
-    <img src="{{ $user['photo']}}">
+    <img src="{{ $user['photo']}}" class="img-circle">
     <br>
     Your email is {{ $user['email']}}
     <br>
