@@ -18,8 +18,35 @@ Route::get('check-answer', function() {
     $uid = Input::get('uid');
 
     if($uid == Session::get('correct_uid')) {
+        $answer = Answer::where('user', Session::get('uid'))->where('friend', $uid)->first();
+
+        if(!$answer) {
+            $a = new Answer;
+            $a->user = Session::get('uid');
+            $a->friend = $uid;
+            $a->correct = 1;
+            $a->save();
+        } else {
+            $a = Answer::where('user', Session::get('uid'))->where('friend', $uid)->first();
+            $a->increment('correct');
+        }
+
+
         return Response::json('true');
     } else {
+        $answer = Answer::where('user', Session::get('uid'))->where('friend', $uid)->first();
+
+        if(!$answer) {
+            $a = new Answer;
+            $a->user = Session::get('uid');
+            $a->friend = $uid;
+            $a->wrong = 1;
+            $a->save();
+        } else {
+            $a = Answer::where('user', Session::get('uid'))->where('friend', $uid)->first();
+            $a->increment('wrong');
+        }
+
         return Response::json('false');
     }
 });
