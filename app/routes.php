@@ -46,21 +46,22 @@ Route::get('login/fb/callback', function() {
  
     $me = $facebook->api('/me');
     $friends = $facebook->api('/me/friends');
+    dd($friends);
  
     $profile = Profile::whereUid($uid)->first();
 
-    if(empty($profile)) {
+    if (empty($profile)) {
         $user = new User;
         $user->name = $me['first_name'].' '.$me['last_name'];
         $user->email = $me['email'];
         $user->photo = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
-        $user->friends = $friends;
  
         $user->save();
  
         $profile = new Profile();
         $profile->uid = $uid;
         $profile->username = $me['username'];
+        $profile->friends = $friends;
         $profile = $user->profiles()->save($profile);
     }
  
