@@ -132,10 +132,8 @@ Route::get('login/fb/callback', function() {
  
     $me = $facebook->api('/me');
     $friends = $facebook->api('/me/friends');
-    dd($friends);
  
     $profile = Profile::whereUid($uid)->first();
-    $friends = $facebook->api('/me/friends');
 
     if (empty($profile)) {
         $user = new User;
