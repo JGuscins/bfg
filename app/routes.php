@@ -52,9 +52,7 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $employment) {
-            foreach($employment as $item) {
-                var_dump($item);
-            }
+            dd($employment);
             die();
         }
 
