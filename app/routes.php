@@ -30,8 +30,12 @@ Route::get('get-question', function() {
     $q['type'] = $category;
 
     if($category == "Picture") {
+        // QUESTION ABOUT PROFILE PICTURE
         $q['title'] = $c_question[$random];
         $q['question'] = $question->url;
+
+        // ANSWERS
+        $q['answers'] = $category::where('url', '!=', $q['question'])->take(3)->get();
     } elseif($category == "Employment") {
         $q['title'] = $c_question[$random];
 
@@ -40,21 +44,33 @@ Route::get('get-question', function() {
 
             if($r == 1) {
                 $q['question'] = $question->employer_1;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
             } elseif($r == 2) {
                 $q['question'] = $question->employer_2;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`employer_2`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
             } else {
                 $q['question'] = $question->employer_3;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`employer_3`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
             }
         } elseif($question->employer_2 != '') {
             $r = rand(1,2);
 
             if($r == 1) {
                 $q['question'] = $question->employer_1;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
             } else {
                 $q['question'] = $question->employer_2;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`employer_2`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
             }
         } else {
             $q['question'] = $question->employer_1;
+            // ANSWERS
+            $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
         }
     } elseif($category == "Education") {
         $q['title'] = $c_question[$random];
@@ -64,25 +80,39 @@ Route::get('get-question', function() {
 
             if($r == 1) {
                 $q['question'] = $question->school_1_name;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
             } elseif($r == 2) {
                 $q['question'] = $question->school_2_name;
+                // school_2_name
+                $q['answers'] = $category::where(DB::raw('`school_2_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
             } else {
                 $q['question'] = $question->school_3_name;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`school_3_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
             }
         } elseif($question->school_2_name != '') {
             $r = rand(1,2);
 
             if($r == 1) {
                 $q['question'] = $question->school_1_name;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
             } else {
                 $q['question'] = $question->school_2_name;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`school_2_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
             }
         } else {
             $q['question'] = $question->school_1_name;
+            // ANSWERS
+            $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
         }
     } elseif($category == "Birthdate") {
         $q['title'] = $c_question[$random];
         $q['question'] = $question->birthdate;
+        // ANSWERS
+        $category::where('birthdate', '!=', $q['question'])->take(3)->get();
     } elseif($category == "Book") {
         $q['title'] = $c_question[$random];
 
@@ -92,6 +122,9 @@ Route::get('get-question', function() {
         $r = rand(0, $segments);
 
         $q['question'] = $books[$r];
+
+        // ANSWERS
+        $q['answers'] = $category::where(DB::raw('`book`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
     } elseif($category == "Music") {
         $q['title'] = $c_question[$random];
 
@@ -101,6 +134,9 @@ Route::get('get-question', function() {
         $r = rand(0, $segments);
 
         $q['question'] = $music[$r];
+
+        // ANSWERS
+        $q['answers'] = $category::where(DB::raw('`music`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
     } elseif($category == "Movie") {
         $q['title'] = $c_question[$random];
 
@@ -110,6 +146,9 @@ Route::get('get-question', function() {
         $r = rand(0, $segments);
 
         $q['question'] = $movies[$r];
+
+        // ANSWERS
+        $q['answers'] = $category::where(DB::raw('`movies`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
     } elseif($category == "Interest") {
         $q['title'] = $c_question[$random];
 
@@ -119,6 +158,9 @@ Route::get('get-question', function() {
         $r = rand(0, $segments);
 
         $q['question'] = $interests[$r];
+
+        // ANSWERS
+        $q['answers'] = $category::where(DB::raw('`interests`'), DB::raw('NOT LIKE'), DB::raw("'%%".$q['question'].",%%'"))->take(3)->get();
     }
 
 
