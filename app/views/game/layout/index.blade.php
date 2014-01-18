@@ -36,19 +36,16 @@
           //   quantity: 1
           // };
 
-          // FB.ui(obj, function(data) {
-          //     console.log(data);
-          //   });
+          var obj = {
+            method: 'apprequests',
+            message: 'My Great Request'
+          };
 
-FB.ui({method: 'apprequests',
-  message: 'My Great Request',
-});
+          FB.ui(obj, function(data) {
+            console.log(data);
+          });
 
         }
-
-
-
-
         document.getElementById('pay').onclick = function() {buy()};
       };
 
