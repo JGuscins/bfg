@@ -182,14 +182,18 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            dd($item);
-            $user = Book::where('id', $item['uid'])->first();
+            // dd($item);
+            // $user = Book::where('id', $item['uid'])->first();
 
-            if(!$user) {
-                $p = new Book;
-            } else {
-                $p = Book::where('id', $item['uid'])->first();
-            }
+            // if(!$user) {
+            //     $p = new Book;
+            // } else {
+            //     $p = Book::where('id', $item['uid'])->first();
+            // }
+
+            $books = explode(', ', $item->books);
+
+            dd($books);
         }
     });
 
