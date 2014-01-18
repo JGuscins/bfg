@@ -182,18 +182,17 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            $books = explode(', ', $item['books']);
+            $user = Book::where('id', $item['uid'])->first();
 
-            foreach($books as $book) {
-                $user = Book::where('uid', $item['uid'])->where('book', $book)->first();
-
-                if(!$user) {
-                    $b = new Book;
-                    $b->uid = $item['uid'];
-                    $b->book = $book;
-                    $b->save();
-                }
+            if(!$user) {
+                $b = new Book;
+            } else {
+                $b = Book::where('id', $item['uid'])->first();
             }
+
+            $b->id = $item['uid'];
+            $b->book = $item['books'];
+            $b->save();
         }
 
         // RESPOND TO AJAX
@@ -214,7 +213,6 @@ Route::group(['prefix' => 'ajax'], function() {
         // STORE DATA
         foreach($data as $item) {
             $user = Music::where('id', $item['uid'])->first();
-            $music = str_replace(', ', chr(255), $item['music']).chr(255);
 
             if(!$user) {
                 $m = new Music;
@@ -223,7 +221,7 @@ Route::group(['prefix' => 'ajax'], function() {
             }
 
             $m->id = $item['uid'];
-            $m->music = $music;
+            $m->music = $item['music'];
             $m->save();
         }
 
