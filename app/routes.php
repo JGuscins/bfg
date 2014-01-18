@@ -165,7 +165,17 @@ Route::get('get-question', function() {
 
 
     // GET ANSWER
-    dd($q);
+    echo 'Question correct answer user id: '.$q['uid'].'<br>';
+    echo 'Question Type: '.$q['type'].'<br>';
+    echo 'Question: '.$q['question'].'<br>';
+    echo 'Anwsers: <br>';
+    foreach($q['answers'] as $answer) {
+        var_dump($answer);
+    }
+
+    die();
+
+
 
     $answers = $category::where($c_table[$random], '!=', '')->where()->take(3)->get();
 
