@@ -52,24 +52,28 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
+            $user = Employment::find($item['uid']);
+
+            if($user === null) {
             $e = new Employment;
-            $e->id = $item['uid'];
-
-            if(isset($item['work'][0])) {
-                $e->employer_1 = $item['work'][0]['employer']['name'];
-            }
-
-            if(isset($item['work'][1])) {
                 $e->id = $item['uid'];
-                $e->employer_1 = $item['work'][1]['employer']['name'];
-            }
 
-            if(isset($item['work'][2])) {
-                $e->id = $item['uid'];
-                $e->employer_1 = $item['work'][2]['employer']['name'];
-            }
+                if(isset($item['work'][0])) {
+                    $e->employer_1 = $item['work'][0]['employer']['name'];
+                }
 
-            $e->save();
+                if(isset($item['work'][1])) {
+                    $e->id = $item['uid'];
+                    $e->employer_1 = $item['work'][1]['employer']['name'];
+                }
+
+                if(isset($item['work'][2])) {
+                    $e->id = $item['uid'];
+                    $e->employer_1 = $item['work'][2]['employer']['name'];
+                }
+
+                $e->save();
+            }
         }
 
         // RESPOND TO AJAX
