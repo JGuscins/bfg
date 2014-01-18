@@ -31,13 +31,18 @@
           var obj = {
             method: 'pay',
             action: 'purchaseitem',
-            product: 'item'
+            product: 'http://bfg.mobbi.lv/test.html',
+            request_id: requestID,
+            quantity: quantity
           };
 
           FB.ui(obj, function(data) {
               console.log(data);
             });
         }
+
+
+
 
         document.getElementById('pay').onclick = function() {buy()};
       };
