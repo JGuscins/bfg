@@ -39,8 +39,7 @@
           var obj = {
             method: 'apprequests',
             message: 'My Great Request',
-            redirect_uri: 'wot',
-            data: 'wot',
+            data: '{"user_invited":me}'
           };
 
           FB.ui(obj, function(data) {
