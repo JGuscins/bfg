@@ -7,103 +7,85 @@ Route::any('testpost', 'TestController@post');
 
 // GAME
 Route::get('/', ['before' => 'auth', function() {
-	$user = Auth::user();
+    $user = Auth::user();
 
     return View::make('game.intro.index')
-    		->with('user', $user);
+            ->with('user', $user);
 }]);
 
 // QUESTION
-Route::get('get-question', ['before' => 'auth', function() {
+Route::group(['prefix' => 'ajax', ['before' => 'auth'], function() {
+    Route::get('profile', function() {
+        // PROFILE PICTURE
+        $query = [ 
+            'method' => 'fql.query',
+            'query' => "SELECT uid, pic_big, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND pic",
+        ];
+    });
 
-	// PROFILE PICTURE
-	$q[0] = [
-        'method' => 'fql.query',
-        'query' => "SELECT uid, pic_big, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND pic LIMIT 4",
-    ];
+    Route::get('work', function() {
+        // WORK
+        $query = [
+            'method' => 'fql.query',
+            'query' => "SELECT uid, work, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND work",
+        ];
+    }); 
 
-    // WORK
-	$q[1] = [
-        'method' => 'fql.query',
-        'query' => "SELECT uid, work, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND work LIMIT 4",
-    ];
+    Route::get('education', function() {
+        // EDUCATION
+        $query = [
+            'method' => 'fql.query',
+            'query' => "SELECT uid, education, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND education",
+        ];
+    });
 
-    // EDUCATION
-	$q[2] = [
-        'method' => 'fql.query',
-        'query' => "SELECT uid, education, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND education LIMIT 4",
-    ];
+    Route::get('birthday', function() {
+        // BIRTHDAY
+        $query = [
+            'method' => 'fql.query',
+            'query' => "SELECT uid, birthday_date, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND birthday_date",
+        ];
+    });
 
-    // BIRTHDAY
-	$q[3] = [
-        'method' => 'fql.query',
-        'query' => "SELECT uid, birthday_date, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND birthday_date",
-    ];
+    Route::get('books', function() {
+        // BOOKS
+        $query = [
+            'method' => 'fql.query',
+            'query' => "SELECT uid, books, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND books",
+        ];
+    });
 
+    Route::get('music', function() {
+        // MUSIC
+        $query = [
+            'method' => 'fql.query',
+            'query' => "SELECT uid, music, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND music",
+        ];
+    });
 
-	$i = 0;
-	while($i <= 9) {
-		// RANDOM SELECTED TYPE OF QUESTION
-		$random = rand(0,3);
+    Route::get('movies', function() {
+        // MOVIES
+        $query = [
+            'method' => 'fql.query',
+            'query' => "SELECT uid, movies, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND movies",
+        ];
+    });
 
-		// EXECUTE QUERY
-		$facebook = new Facebook(Config::get('facebook'));
-		$data = $facebook->api($q[$random]);
-		dd($data);
-
-		// QUESTION ARRAY
-		$q = [];
-
-		// LOOP QUERY
-		foreach($data as $key => $item) {
-			if($random == 0) {
-				// PROFILE PICTURE QUESTION
-	    		$q['type'] = 'profile_picture';
-
-	    		if(!empty($item['pic_big'])) {
-	    			$q['items'][$key]['correct'] = 1;
-	    			$q['question'] = 'Who owns this photo: <img src="https://graph.facebook.com/'.$item['uid'].'/picture?height=200" />';
-	    			$q['items'][$key]['item'] = $item['pic_big'];
-	    			$q['uid'] = $item['uid'];
-	    		} else {
-	    			$q['items'][$key]['correct'] = 0;
-	    		}
-
-	    		$q['items'][$key]['uid']  = $item['uid'];
-	    		$q['items'][$key]['name'] = $item['name'];
-			}
-
-			if($random == 1) {
-				// WORK QUESTION
-	    		$q['type'] = 'work';
-
-	    		if(!empty($item['work'])) {
-	    			$q['items'][$key]['correct'] = 1;
-	    			$q['question'] = 'Who works at: '.$item['work'][0]['employer']['name'];
-	    			$q['items'][$key]['item'] = $item['work'][0]['employer']['name'];
-	    			$q['uid'] = $item['uid'];
-	    		} else {
-	    			$q['items'][$key]['correct'] = 0;
-	    		}
-
-	    		$q['items'][$key]['uid']  = $item['uid'];
-	    		$q['items'][$key]['name'] = $item['name'];
-			}
-
-			if($random == 2) {
-
-			}
-		}
-	}
+    Route::get('interests', function() {
+        // INTERESTS
+        $query = [
+            'method' => 'fql.query',
+            'query' => "SELECT uid, interests, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND interests",
+        ];
+    });
 
 
-
-}]);
+})
  
 // AUTH
 Route::get('login', function() {
-	return View::make('game.intro.login');
-});	
+    return View::make('game.intro.login');
+}); 
 
 
 Route::get('login/fb', function() {
@@ -120,16 +102,16 @@ Route::get('login/fb/callback', function() {
     $code = Input::get('code');
 
     if(strlen($code) == 0) {
-    	return Redirect::to('/')
-    			->with('message', 'There was an error communicating with Facebook');
+        return Redirect::to('/')
+                ->with('message', 'There was an error communicating with Facebook');
     }
  
     $facebook = new Facebook(Config::get('facebook'));
     $uid = $facebook->getUser();
  
     if($uid == 0) {
-    	return Redirect::to('/')
-    			->with('message', 'There was an error');
+        return Redirect::to('/')
+                ->with('message', 'There was an error');
     }
  
     $me = $facebook->api('/me');
@@ -164,7 +146,7 @@ Route::get('login/fb/callback', function() {
     Auth::login($user);
  
     return Redirect::to('/')
-    		->with('message', 'Logged in with Facebook');
+            ->with('message', 'Logged in with Facebook');
 });
 
 Route::get('logout', function() {
