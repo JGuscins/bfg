@@ -174,8 +174,12 @@ Route::get('switch-question', function() {
         ];
     }
 
+    $profile = Profile::where('uid', Session::get('uid'))->first();
+    $user = User::where('id', $profile->user_id)->first();
+
     $q['answers'] = $a['answers'];
     $q['answers'][] = ['uid' => $q['uid'], 'name' => $q['name'], 'picture' => $q['picture']];
+    $q['coins'] = $user->coins;
     
     // STORE CORRECT UID
     Session::put('correct_uid', $q['uid']);
@@ -405,8 +409,12 @@ Route::get('get-question', function() {
         ];
     }
 
+    $profile = Profile::where('uid', Session::get('uid'))->first();
+    $user = User::where('id', $profile->user_id)->first();
+
     $q['answers'] = $a['answers'];
     $q['answers'][] = ['uid' => $q['uid'], 'name' => $q['name'], 'picture' => $q['picture']];
+    $q['coins'] = $user->coins;
     
     // STORE CORRECT UID
     Session::put('correct_uid', $q['uid']);
