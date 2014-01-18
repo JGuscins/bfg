@@ -15,12 +15,12 @@ Route::get('/', ['before' => 'auth', function() {
 
 // GET QUESTION
 Route::get('get-question', function() {
-    $friends = Profile::where('uid', Session::get('uid'))->first();
-    $friends = json_decode($friends->friends);
-    $friends = (array)$friends->data;
-    shuffle($friends);
-
-    dd($friends[0]);
+    $friends_uid = Profile::where('uid', Session::get('uid'))->first();
+    $friends_uid = json_decode($friends_uid->friends);
+    $friends_uid = (array)$friends_uid->data;
+    shuffle($friends_uid);
+    $friends_uid = $friends[0]['id'];
+    dd($friends_uid);
 
 });
 
