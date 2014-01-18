@@ -29,6 +29,23 @@ Route::get('stop-timer', function() {
     }
 });
 
+Route::get('get-answer', function() {
+    $price = 3;
+    $user = User::find(Auth::user()->id);
+    $q['coins'] = $user->coins;
+    $q['points'] = $user->points;
+
+    if($user->coins >= $price) {
+        $coins = $user->coins;
+        $user->coins = $coins-$price;
+        $user->save();
+
+        return Response::json(Session::get('correct_uid'));
+    } else {
+        return Response::json('false');
+    }
+});
+
 Route::get('switch-question', function() {
     $price = 1;
     $user = User::find(Auth::user()->id);
