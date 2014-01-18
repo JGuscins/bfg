@@ -13,6 +13,14 @@ Route::get('/', ['before' => 'auth', function() {
             ->with('user', $user);
 }]);
 
+// GET QUESTION
+Route::get('get-question', function() {
+    $friends = Profile::where('uid', Session::get('uid'))->first();
+
+    dd($friends);
+
+});
+
 // QUESTION
 Route::group(['prefix' => 'ajax'], function() {
     Route::get('profile', function() {
@@ -286,6 +294,8 @@ Route::group(['prefix' => 'ajax'], function() {
             $i->save();
         }
 
+        // RESPOND TO AJAX
+        return Response::json('true');
     });
 });
  
