@@ -173,7 +173,7 @@ Route::get('get-question', function() {
         $a['answers'] = ['uid' => $answer['id'], 'name' => 'x', 'picture' => 'x'];
     }
 
-    $q['answers'] = $a['answers'];
+    $q['answers'][] = $a['answers'];
 
     dd($q);
 
