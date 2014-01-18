@@ -16,8 +16,7 @@ Route::any('/', ['before' => 'auth', function() {
 Route::get('stop-timer', function() {
     $price = 1;
 
-    $profile = Profile::where('uid', Session::get('uid'))->first();
-    $user = User::where('id', $profile->user_id)->first();
+    $user = Auth::user();
 
     if($user->coins >= $price) {
         $coins = $user->coins
