@@ -215,7 +215,7 @@ Route::group(['prefix' => 'ajax'], function() {
         foreach($data as $item) {
             // Grafomāns, ATB, Korn, Linkin Park
 
-            $music = str_replace(', ', chr(178), $item['music']);
+            $music = chr(178).str_replace(', ', chr(178), $item['music']).chr(178);
             dd($music);
             // $musics = explode(', ', $item['music']);
 
