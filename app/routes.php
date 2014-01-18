@@ -19,7 +19,7 @@ Route::get('stop-timer', function() {
     $user = User::find(Auth::user()->id);
 
     if($user->coins >= $price) {
-        $coins = $user->coins
+        $coins = $user->coins;
         $user->coins = $coins-$price;
         $user->save();
 
