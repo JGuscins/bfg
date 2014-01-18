@@ -52,7 +52,7 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            dd($data);
+            dd($item);
             $p = new Employment;
             $p->id = $item['uid'];
             $p->url = $item['pic_big'];
