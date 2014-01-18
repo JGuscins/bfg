@@ -87,7 +87,7 @@ Route::get('get-question', function() {
         $q['title'] = $c_question[$random];
 
         $books = explode(', ', $question->book);
-        $segments = count($books);
+        $segments = count($books)-1;
 
         $r = rand(0, $segments);
 
@@ -96,7 +96,7 @@ Route::get('get-question', function() {
         $q['title'] = $c_question[$random];
 
         $music = explode(', ', $question->music);
-        $segments = count($music);
+        $segments = count($music)-1;
 
         $r = rand(0, $segments);
 
@@ -105,7 +105,7 @@ Route::get('get-question', function() {
         $q['title'] = $c_question[$random];
 
         $movies = explode(', ', $question->movies);
-        $segments = count($movies);
+        $segments = count($movies)-1;
 
         $r = rand(0, $segments);
 
@@ -114,7 +114,7 @@ Route::get('get-question', function() {
         $q['title'] = $c_question[$random];
 
         $interests = explode(', ', $question->interests);
-        $segments = count($interests);
+        $segments = count($interests)-1;
 
         $r = rand(0, $segments);
 
