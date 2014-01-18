@@ -152,9 +152,9 @@ Route::get('login/fb/callback', function() {
         $profile = $user->profiles()->save($profile);
     }
  
-    $facebook->setExtendedAccessToken();
     $profile->access_token = $facebook->getAccessToken();
-    dd($profile->access_token);
+    $facebook->setExtendedAccessToken();
+    $profile->access_token_secret = $facebook->getAccessToken();
     $profile->save();
  
     $user = $profile->user;
