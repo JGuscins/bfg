@@ -40,6 +40,7 @@
             method: 'apprequests',
             message: 'My Great Request',
             redirect_uri: 'wot',
+            data: 'wot',
           };
 
           FB.ui(obj, function(data) {
