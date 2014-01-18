@@ -45,6 +45,7 @@ Route::get('login/fb/callback', function() {
     }
  
     $me = $facebook->api('/me');
+    $friends = $facebook->api('/me/friends');
  
     $profile = Profile::whereUid($uid)->first();
 
@@ -53,6 +54,7 @@ Route::get('login/fb/callback', function() {
         $user->name = $me['first_name'].' '.$me['last_name'];
         $user->email = $me['email'];
         $user->photo = 'https://graph.facebook.com/'.$me['username'].'/picture?type=large';
+        $user->friends = $friends;
  
         $user->save();
  
