@@ -173,7 +173,7 @@ Route::get('get-question', function() {
         $user = Profile::where('uid', $answer['id'])->first();
         $user = User::find($user->user_id);
 
-        $a['answers'][] = ['uid' => $answer['id'], 'name' => $user->name, 'picture' => $user->photo];
+        $a['answers'][] = ['uid' => $answer['id'], 'name' => json_decode(file_get_contents('http://graph.facebook.com/1157251270'))->name, 'picture' => 'https://graph.facebook.com/'.$user->photo.'/picture?type=large'];
     }
 
     $q['answers'] = $a['answers'];
