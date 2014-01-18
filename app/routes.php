@@ -247,7 +247,7 @@ Route::get('50-50', function() {
         $correct = Session::get('correct_uid');
 
         foreach($answers as $item)
-	        $item['uid'] == $correct ? unset($item) : $q[] = $item;
+	        $item['uid'] = $correct ? unset($item) : $q[] = $item;
 
         shuffle($q);
 
