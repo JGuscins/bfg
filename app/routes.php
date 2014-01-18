@@ -182,20 +182,17 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            $user = Book::where('id', $item['uid'])->first();
-
-            if(!$user) {
-                $b = new Book;
-            } else {
-                $b = Book::where('id', $item['uid'])->first();
-            }
-
             $books = explode(', ', $item['books']);
 
             foreach($books as $book) {
-                $b->uid = $item['uid'];
-                $b->book = $book;
-                $b->save();
+                $user = Book::where('uid', $item['uid'])->where('book', $book)->first();
+
+                if(!$user) {
+                    $b = new Book;
+                    $b->uid = $item['uid'];
+                    $b->book = $book;
+                    $b->save();
+                }
             }
         }
 
