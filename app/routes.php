@@ -239,8 +239,12 @@ Route::get('get-question', function() {
     // LEVEL
     if(Session::get('step')) {
         $step = Session::get('step');
-        $step = $step+1;
-        Session::put('step', $step);
+        if($step == 10) {
+            Session::forget('step');
+        } else {
+            $step = $step+1;
+            Session::put('step', $step);
+        }
     } else {
         Session::put('step', 1);
     }
