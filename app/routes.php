@@ -164,6 +164,9 @@ Route::group(['prefix' => 'ajax'], function() {
             $p->birthdate = $bday;
             $p->save();
         }
+
+        // RESPOND TO AJAX
+        return Response::json('true');
     });
 
     Route::get('books', function() {
@@ -172,6 +175,22 @@ Route::group(['prefix' => 'ajax'], function() {
             'method' => 'fql.query',
             'query' => "SELECT uid, books, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND books",
         ];
+
+        // FACEBOOK DATA
+        $facebook = new Facebook(Config::get('facebook'));
+        $data     = $facebook->api($query);
+
+        // STORE DATA
+        foreach($data as $item) {
+            dd($item);
+            $user = Book::where('id', $item['uid'])->first();
+
+            if(!$user) {
+                $p = new Book;
+            } else {
+                $p = Book::where('id', $item['uid'])->first();
+            }
+        }
     });
 
     Route::get('music', function() {
