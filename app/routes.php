@@ -215,16 +215,16 @@ Route::group(['prefix' => 'ajax'], function() {
         foreach($data as $item) {
             $user = Music::where('id', $item['uid'])->first();
             $music = chr(178).str_replace(', ', chr(178), $item['music']).chr(178);
-            
+
             if(!$user) {
                 $m = new Music;
             } else {
                 $m = Music::where('id', $item['uid'])->first();
             }
 
-            $p->id = $item['uid'];
-            $p->music = $music;
-            $p->save();
+            $m->id = $item['uid'];
+            $m->music = $music;
+            $m->save();
         }
 
 
