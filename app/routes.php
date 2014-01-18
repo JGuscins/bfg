@@ -191,7 +191,7 @@ Route::group(['prefix' => 'ajax'], function() {
             //     $p = Book::where('id', $item['uid'])->first();
             // }
 
-            $books = explode(', ', $item->books);
+            $books = explode(', ', $item['books']);
 
             dd($books);
         }
