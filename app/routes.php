@@ -149,8 +149,6 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            dd($item);
-
             $user = Birthdate::where('id', $item['uid'])->first();
 
             if(!$user) {
