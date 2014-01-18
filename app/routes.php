@@ -55,7 +55,9 @@ Route::group(['prefix' => 'ajax'], function() {
             $user = Employment::where('id', $item['uid'])->first();
 
             if(!$user) {
-            $e = new Employment;
+                // NEW USER
+                e = new Employment;
+
                 $e->id = $item['uid'];
 
                 if(isset($item['work'][0])) {
@@ -73,6 +75,25 @@ Route::group(['prefix' => 'ajax'], function() {
                 }
 
                 $e->save();
+            } else {
+                // EXISTING USER
+                $e->id = $item['uid'];
+
+                if(isset($item['work'][0])) {
+                    $e->employer_1 = $item['work'][0]['employer']['name'];
+                }
+
+                if(isset($item['work'][1])) {
+                    $e->id = $item['uid'];
+                    $e->employer_2 = $item['work'][1]['employer']['name'];
+                }
+
+                if(isset($item['work'][2])) {
+                    $e->id = $item['uid'];
+                    $e->employer_3 = $item['work'][2]['employer']['name'];
+                }
+
+                $e->save();    
             }
         }
 
