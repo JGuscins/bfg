@@ -223,7 +223,7 @@ Route::group(['prefix' => 'ajax'], function() {
             }
 
             $m->id = $item['uid'];
-            $m->music = $music;
+            $m->music = 'x';
             $m->save();
         }
 
