@@ -23,6 +23,7 @@ Route::group(['prefix' => 'ajax'], function() {
         ];
 
         // FACEBOOK
+        $facebook = new Facebook(Config::get('facebook'));
         $data = $facebook->api($query);
         dd($data);
     });
