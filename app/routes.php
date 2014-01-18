@@ -172,7 +172,7 @@ Route::get('get-question', function() {
     foreach($q['answers'] as $answer) {
         $a['answers'][] = [
             'uid' => $answer['id'], 
-            'name' => json_decode(file_get_contents('http://graph.facebook.com/'.$answer['id']))->name, '
+            'name' => json_decode(file_get_contents('http://graph.facebook.com/'.$answer['id'].'?fields=name'))->name, '
             picture' => 'https://graph.facebook.com/'.$answer['id'].'/picture?type=large'
         ];
     }
