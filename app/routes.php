@@ -165,10 +165,6 @@ Route::get('get-question', function() {
 
 
     // GET ANSWER
-    echo 'Question correct answer user id: '.$q['uid'].'<br>';
-    echo 'Question Type: '.$q['type'].'<br>';
-    echo 'Question: '.$q['question'].'<br>';
-    echo 'Anwsers: <br>';
     foreach($q['answers'] as $answer) {
         $a['answers'][] = [
             'uid' => $answer['id'], 
