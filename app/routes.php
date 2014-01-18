@@ -170,10 +170,11 @@ Route::get('get-question', function() {
     echo 'Question: '.$q['question'].'<br>';
     echo 'Anwsers: <br>';
     foreach($q['answers'] as $answer) {
-        $user = Profile::where('uid', $answer['id'])->first();
-        $user = User::find($user->user_id);
-
-        $a['answers'][] = ['uid' => $answer['id'], 'name' => json_decode(file_get_contents('http://graph.facebook.com/1157251270'))->name, 'picture' => 'https://graph.facebook.com/'.$user->photo.'/picture?type=large'];
+        $a['answers'][] = [
+            'uid' => $answer['id'], 
+            'name' => json_decode(file_get_contents('http://graph.facebook.com/'.$answer['id']))->name, '
+            picture' => 'https://graph.facebook.com/'.$answer['id'].'/picture?type=large'
+        ];
     }
 
     $q['answers'] = $a['answers'];
