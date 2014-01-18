@@ -21,6 +21,10 @@ Route::group(['prefix' => 'ajax'], function() {
             'method' => 'fql.query',
             'query' => "SELECT uid, pic_big, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND pic",
         ];
+
+        // FACEBOOK
+        $data = $facebook->api($query);
+        dd($data);
     });
 
     Route::get('work', function() {
