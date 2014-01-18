@@ -213,23 +213,20 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            // Grafomāns, ATB, Korn, Linkin Park
-
+            $user = Music::where('id', $item['uid'])->first();
             $music = chr(178).str_replace(', ', chr(178), $item['music']).chr(178);
-            dd($music);
-            // $musics = explode(', ', $item['music']);
-
-            foreach($musics as $music) {
-                $user = Music::where('uid', $item['uid'])->where('music', $music)->first();
-
-                if(!$user) {
-                    $b = new Music;
-                    $b->uid = $item['uid'];
-                    $b->music = $music;
-                    $b->save();
-                }
+            
+            if(!$user) {
+                $m = new Music;
+            } else {
+                $m = Music::where('id', $item['uid'])->first();
             }
+
+            $p->id = $item['uid'];
+            $p->music = $music;
+            $p->save();
         }
+
 
         // RESPOND TO AJAX
         return Response::json('true');
