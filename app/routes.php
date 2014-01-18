@@ -112,7 +112,7 @@ Route::get('get-question', function() {
         $q['title'] = $c_question[$random];
         $q['question'] = $question->birthdate;
         // ANSWERS
-        $category::where('birthdate', '!=', $q['question'])->take(3)->get();
+        $q['answers'] = $category::where('birthdate', '!=', $q['question'])->take(3)->get();
     } elseif($category == "Book") {
         $q['title'] = $c_question[$random];
 
