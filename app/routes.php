@@ -180,14 +180,7 @@ Route::get('get-question', function() {
 
     shuffle($q['answers']);
 
-    dd($q);
-
-    die();
-
-
-
-    $answers = $category::where($c_table[$random], '!=', '')->where()->take(3)->get();
-
+    return Response::json($q);
 });
 
 // QUESTION
