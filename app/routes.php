@@ -126,7 +126,7 @@ Route::get('login/fb/callback', function() {
  
     $facebook = new Facebook(Config::get('facebook'));
     $uid = $facebook->getUser();
-    $access = $facebook->getUrl('graph', '/oauth/access_token'),
+    $access = $facebook->getUrl('graph', '/oauth/access_token');
     dd($access);
  
     if($uid == 0) {
