@@ -19,7 +19,7 @@ Route::get('get-question', function() {
     $friends_uid = json_decode($friends_uid->friends);
     $friends_uid = (array)$friends_uid->data;
     shuffle($friends_uid);
-    $friends_uid = $friends[0]['id'];
+    $friends_uid = $friends_uid[0]['id'];
     dd($friends_uid);
 
 });
