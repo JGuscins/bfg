@@ -15,14 +15,14 @@ Route::get('/', ['before' => 'auth', function() {
 
 // GET QUESTION 
 Route::get('get-question', function() {
-    // GET RANDOM FRIEND
-    $friends_uid = Profile::where('uid', Session::get('uid'))->first();
-    $friends_uid = json_decode($friends_uid->friends);
-    $friends_uid = (array)$friends_uid->data;
-    shuffle($friends_uid); 
+    // // GET RANDOM FRIEND
+    // $friends_uid = Profile::where('uid', Session::get('uid'))->first();
+    // $friends_uid = json_decode($friends_uid->friends);
+    // $friends_uid = (array)$friends_uid->data;
+    // shuffle($friends_uid); 
 
-    // RANDOM FRIEND
-    $friends_uid = $friends_uid[0]->id;
+    // // RANDOM FRIEND
+    // $friends_uid = $friends_uid[0]->id;
 
     // RANDOM CATEGORY
     $random = rand(0,7);
@@ -30,10 +30,7 @@ Route::get('get-question', function() {
     $categories_object = ['url', 'employer_1', 'school_1_name', 'birthdate', 'book', 'music', 'movies', 'interests'];
     $category = $categories[$random];
 
-    // GENERATE QUESTION
-    echo $category;
-    echo $friends_uid;
-    $question = $category::where('id', $friends_uid)->where($categories_object[$random], '!=', '')->get();
+    $question = $category::where($categories_object[$random], '!=', '')->get();
     dd($question);
 
 });
