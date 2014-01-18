@@ -36,6 +36,10 @@ Route::get('check-answer', function() {
 
     if($uid == Session::get('correct_uid')) {
         $answer = Answer::where('user', Session::get('uid'))->where('friend', $uid)->first();
+        $profile = Profile::where('uid', Session::get('uid'))->first();
+        $user = User::where('id', $profile->user_id)->first();
+        $user->increment('points');
+        $user->save();
 
         if(!$answer) {
             $a = new Answer;
