@@ -27,11 +27,12 @@ Route::group(['prefix' => 'ajax'], function() {
         $data     = $facebook->api($query);
 
         // STORE DATA
-        foreach($data as $employment) {
-            foreach($employment as $item) {
-                var_dump($item);
-            }
-            die();
+        foreach($data as $item) {
+            foreach()
+            $p = new Picture;
+            $p->id = $item['uid'];
+            $p->url = $item['pic_big'];
+            $p->save();
         }
 
         // RESPOND TO AJAX
@@ -51,12 +52,11 @@ Route::group(['prefix' => 'ajax'], function() {
         $data     = $facebook->api($query);
 
         // STORE DATA
-        foreach($data as $item) {
-            dd($item);
-            $p = new Employment;
-            $p->id = $item['uid'];
-            $p->url = $item['pic_big'];
-            $p->save();
+        foreach($data as $employment) {
+            foreach($employment as $item) {
+                var_dump($item);
+            }
+            die();
         }
 
         // RESPOND TO AJAX
