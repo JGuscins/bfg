@@ -1,5 +1,7 @@
 @extends('game.layout.index')
 
 @section('content')
-	Hi! Would you like to <a href="login/fb">Login with Facebook</a>?
+	<div style="width: 100%; position: absolute; top: 50%; left: 50%;">
+		<button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='/login/fb/';">Login</button>
+	</div>
 @stop
