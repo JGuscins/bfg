@@ -82,6 +82,18 @@ Route::group(['prefix' => 'ajax'], function() {
             'method' => 'fql.query',
             'query' => "SELECT uid, education, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND education",
         ];
+
+        // FACEBOOK DATA
+        $facebook = new Facebook(Config::get('facebook'));
+        $data     = $facebook->api($query);
+
+        // STORE DATA
+        foreach($data as $item) {
+            dd($item);
+        }
+
+        // RESPOND TO AJAX
+        return Response::json('true');
     });
 
     Route::get('birthday', function() {
