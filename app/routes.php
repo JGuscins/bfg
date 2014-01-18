@@ -52,8 +52,8 @@ Route::group(['prefix' => 'ajax'], function() {
 
         // STORE DATA
         foreach($data as $item) {
-            $user = Employment::find($item['uid']);
-
+            $user = Employment::where('id', $item['uid'])->first()
+            dd($user);
             if($user === null) {
             $e = new Employment;
                 $e->id = $item['uid'];
