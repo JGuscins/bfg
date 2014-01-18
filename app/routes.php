@@ -31,13 +31,12 @@ Route::get('stop-timer', function() {
 
 Route::get('switch-question', function() {
     $price = 1;
-    $profile = Profile::where('uid', Session::get('uid'))->first();
-    $user = User::where('id', $profile->user_id)->first();
+    $user = User::find(Auth::user()->id);
     $q['coins'] = $user->coins;
     $q['points'] = $user->points;
 
     if($user->coins >= $price) {
-        $coins = $user->coins
+        $coins = $user->coins;
         $user->coins = $coins-$price;
         $user->save();
 
