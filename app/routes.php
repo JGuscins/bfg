@@ -236,6 +236,31 @@ Route::group(['prefix' => 'ajax'], function() {
             'method' => 'fql.query',
             'query' => "SELECT uid, movies, name FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = ".Session::get('uid')." ORDER BY rand()) AND movies",
         ];
+
+
+        // FACEBOOK DATA
+        $facebook = new Facebook(Config::get('facebook'));
+        $data     = $facebook->api($query);
+
+        // STORE DATA
+        foreach($data as $item) {
+            dd($item);
+            $user = Music::where('id', $item['uid'])->first();
+
+            if(!$user) {
+                $m = new Music;
+            } else {
+                $m = Music::where('id', $item['uid'])->first();
+            }
+
+            $m->id = $item['uid'];
+            $m->music = $item['music'];
+            $m->save();
+        }
+
+
+        // RESPOND TO AJAX
+        return Response::json('true');
     });
 
     Route::get('interests', function() {
