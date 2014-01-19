@@ -67,8 +67,8 @@
 	    			$first_name = $name[0];
 	    			$last_name = $name[1];
 	    		?>
-				<a id="q{{ $key }}" data-uid="" href="#"><span class="first-name">{{ $first_name }}</span><br>
-	    		<span class="last-name">{{ $last_name }}</span> <span><img class="profile-image" src="{{ str_replace('?type=large', '?width=500&height=500', $item['picture']) }}"></span></a>
+				<a id="q{{ $key+1 }}" data-uid="" href="#">{{ $first_name }}<br>
+	    		{{ $last_name }} <span><img class="profile-image" src="{{ str_replace('?type=large', '?width=500&height=500', $item['picture']) }}"></span></a>
 	    	@endforeach
 	    </div>
 	    <div class="footer">
