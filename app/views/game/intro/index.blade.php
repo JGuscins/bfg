@@ -16,14 +16,17 @@
 					<span>
 						<?php
 							$coins = Auth::user()->coins;
-							$level = round($coins/100);
 
-							echo $level;
+							if($coins > 100) {
+								$real = $coins-100;
+							} else {
+								$real = $coins;
+							}
 						?>
 					</span>
 				</div>
 				<div class="progress-br">
-					<div style="-webkit-animation: mymove 25s infinite linear;" class="progress-br-color"></div>
+					<div style="width: {{ $real }}px;" class="progress-br-color"></div>
 				</div>
 			</div>
 	    	<div class="money">
