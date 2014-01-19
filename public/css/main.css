@@ -493,6 +493,7 @@ margin: 0;
 	width: 680px;
 }
 .quiz .body .answers a {
+	position: relative;
 	background: url(../img/answ-bg.png) center center no-repeat;
 	width: 262px;
 	height: 75px;
@@ -526,8 +527,8 @@ display: inline-block;
 width: 85px;
 height: 85px;
 position: absolute;
-margin-top: -40px;
-margin-left: 60px;
+top: -6px;
+right: -12px;
 }
 .quiz .body .answers a span img {
 	max-width: 100%;
