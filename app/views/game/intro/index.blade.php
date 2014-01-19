@@ -25,6 +25,10 @@
 								$real = $points;
 							}
 
+							if($level == 0) {
+								$level = 1;
+							}
+
 							echo $level;
 						?>
 					</span>
