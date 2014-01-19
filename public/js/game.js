@@ -3,9 +3,9 @@ $(document).ready(function(e) {
 	$('#50-50').click(function(e) {	
 		if(!$('.answers').hasClass('inactive')) {
 			$.get(base_url + '/50-50', function(data) {
-				console.log(data);
 				if(data != "false") {
-					
+					$("a[data-uid='"+ data[0] +"']").css({'opacity': 0.5});
+					$("a[data-uid='"+ data[1] +"']").css({'opacity': 0.5});
 				}
 			});
 		}
