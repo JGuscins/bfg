@@ -29,7 +29,7 @@ $(document).ready(function(e) {
 
 		$.get(base_url + '/check-answer?uid=' + uid, function(data) {
 			console.log(data);
-			if(data == "ture") {
+			if(data == "true") {
 				// ANSWER CORRECT
 				$('#a'+step).addClass('correct');
 			} else {
