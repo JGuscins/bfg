@@ -2,6 +2,14 @@ $(document).ready(function(e) {
 	// 50-50
 	$('#50-50').click(function(e) {
 		console.log('50-50');
+		if(!$('.answers').hasClass('inactive')) {
+			$.get(base_url + '/50-50', function(data) {
+				console.log(data);
+				if(data != "false") {
+					console.log(data);
+				}
+			});
+		}
 	});	
 
 	// STOP TIME
@@ -27,8 +35,6 @@ $(document).ready(function(e) {
 			qid = $(this).data('id');
 			uid = $(this).data('uid');
 			step = $('.step span').html();
-
-			console.log(step);
 
 			$.get(base_url + '/check-answer?uid=' + uid, function(data) {
 				console.log(data);
