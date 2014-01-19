@@ -47,8 +47,9 @@ $(document).ready(function(e) {
 				window.location = base_url;
 			}
 
+			console.log(uid);
+
 			$.get(base_url + '/check-answer?uid=' + uid, function(data) {
-				console.log(data);
 				if(data == "true") {
 					// ANSWER CORRECT
 					$('#a'+step).addClass('right');
