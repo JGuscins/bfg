@@ -1,6 +1,4 @@
 <?php
-Debugbar::enable();
-
 //TEST
 Route::any('test', 'TestController@index');
 Route::any('testpost', 'TestController@post');
