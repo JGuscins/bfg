@@ -29,7 +29,7 @@
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('.links').hide().animate({'opacity':0.1},250).slideDown(500).fadeIn(1500,function(){ $(this).animate({'opacity':1},500); });
+			$('.links').animate({'opacity':0.1},250).slideDown(500).fadeIn(1500,function(){ $(this).animate({'opacity':1},500); });
 		});
 	</script>
 @stop
