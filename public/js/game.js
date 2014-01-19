@@ -23,7 +23,14 @@ $(document).ready(function(e) {
 
 	// SHOW ANSEER
 	$('#show-answer').click(function(e) {
-		console.log('show-answer');
+		if(!$('.answers').hasClass('inactive')) {
+			$.get(base_url + '/get-answer', function(data) {
+				if(data != "false") {
+					$('.answers a').css({'opacity': 0.5});
+					$("a[data-uid='"+ data +"']").css({'opacity': 1});
+				}
+			});
+		}
 	});	
 
 	// CHECK QUESTION
