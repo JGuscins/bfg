@@ -72,8 +72,7 @@ $(document).ready(function(e) {
 
 			$.each(data.answers, function(key, value) {
 				key = key+1;
-	    		$('#q'+key).html(''+ value.name +'<br>
-	    		'+ value.name +' <span><img class="profile-image" src="'+ value.picture +'"></span>')
+	    		$('#q'+key).html(''+ value.name +'<br>'+ value.name +' <span><img class="profile-image" src="'+ value.picture +'"></span>');
 	    		$('#g'+key).data('id', key).data('uid', value.uid);
 			});
 		});
