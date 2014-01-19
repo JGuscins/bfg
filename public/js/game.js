@@ -36,8 +36,6 @@ $(document).ready(function(e) {
 		if(!$('.answers').hasClass('inactive')) {
 			$('.answers').addClass('inactive');
 
-			qid = $(this).data('id');
-			uid = $(this).data('uid');
 			step = $('.step span').html();
 
 			$('.step span').html(Number(step)+1);
@@ -45,6 +43,8 @@ $(document).ready(function(e) {
 			if(Number(step)+1 == 11) {
 				window.location = base_url + '/leaderboard';
 			}
+
+			console.log($(this).data('uid'));
 
 			$.get(base_url + '/check-answer?uid=' + $(this).data('uid'), function(data) {
 				if(data == "true") {
