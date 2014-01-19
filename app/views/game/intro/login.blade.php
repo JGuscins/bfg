@@ -22,7 +22,7 @@
 	    		@endif
 	    	@endforeach
 	    </div>
-		<div class="links">
+		<div class="links" style="display: none;">
 			<a href="#" onclick="window.location.href='/login/fb/';"><img src="{{ URL::to('img/lets-play-bttn.png') }}"></a>
 			<a id="invite" href="#"><img src="{{ URL::to('img/invite-friends-bttn.png') }}"></a>
 		</div>
