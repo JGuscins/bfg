@@ -84,5 +84,7 @@
 	    </div>
 	</div>	
 </div>
-
+<script type="text/javascript">
+	getQuestion();
+</script>
 @stop
