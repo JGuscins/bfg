@@ -28,7 +28,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(window).load(function(){
+		$(document).ready(function(){
 			$('.links').hide().animate({'opacity':0.1},250).slideDown(500).fadeIn(1500,function(){ $(this).animate({'opacity':1},500); });
 		});
 	</script>
