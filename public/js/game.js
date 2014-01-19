@@ -60,7 +60,7 @@ $(document).ready(function(e) {
 	function getQuestion() {
 		$.get(base_url + '/get-question', function(data) {
 			console.log(data);
-			if(data.type == "Music" || data.type ==  "Movie" || $question['type'] data.type ==  "Book") {
+			if(data.type == "Music" || data.type == "Movie" || data.type == "Book") {
 				$('#question-image').attr('src', data.picture);
 				$('#question').html(data.title + ' ' + data.question);
 			} else if(data.type == "Picture") {
