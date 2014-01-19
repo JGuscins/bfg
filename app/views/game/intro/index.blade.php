@@ -66,7 +66,7 @@
 	    </div>
 	    <div class="footer">
 		    <div class="game-progress">
-		    	<div class="step">1/10</div>
+		    	<div class="step">{{ Session::get('level', 1) }}/10</div>
 		    	<div class="bites">
 		    		<span></span>
 		    		<span></span>
