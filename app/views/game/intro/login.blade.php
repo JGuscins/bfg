@@ -6,19 +6,19 @@
 	    <div class="profile-images">
 	    	@foreach($users as $key => $item)
 	    		@if($key == 0)
-	    			<div id="first"><img src="{{ $item->photo }}"></div>
+	    			<div id="first"><img src="{{ str_replace('?type=large', '?height=500', $item->photo) }}"></div>
 	    		@endif
 
 	    		@if($key == 1)
-	    			<div id="second"><img src="{{ $item->photo }}"></div>
+	    			<div id="second"><img src="{{ str_replace('?type=large', '?height=500', $item->photo) }}"></div>
 	    		@endif
 
 	    		@if($key == 2)
-	    			<div id="third"><img src="{{ $item->photo }}"></div>
+	    			<div id="third"><img src="{{ str_replace('?type=large', '?height=500', $item->photo) }}"></div>
 	    		@endif
 
 	    		@if($key == 3)
-	    			<div id="fourth"><img src="{{ $item->photo }}"></div>
+	    			<div id="fourth"><img src="{{ str_replace('?type=large', '?height=500', $item->photo) }}"></div>
 	    		@endif
 	    	@endforeach
 	    </div>
