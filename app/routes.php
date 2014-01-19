@@ -773,6 +773,11 @@ Route::get('login/fb/callback', function() {
         $profile->username = $me['username'];
         $profile->friends = json_encode($friends);
         $profile = $user->profiles()->save($profile);
+
+        $badge = New Badge();
+        $badge->uid = $uid;
+        $badge->badge = "logged_in";
+        $badge = $user->badges()->save($badge);
     }
  
     $profile->access_token = $facebook->getAccessToken();
