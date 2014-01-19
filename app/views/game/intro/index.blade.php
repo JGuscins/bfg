@@ -70,7 +70,7 @@
 				<a id="q{{ $key+1 }}" data-uid="" href="#">{{ $first_name }}<br>
 	    		{{ $last_name }} <span><img class="profile-image" src="{{ str_replace('?type=large', '?width=500&height=500', $item['picture']) }}"></span></a>
 	    	@endforeach
-	    </div>
+	    </div> 
 	    <div class="footer">
 		    <div class="game-progress">
 		    	<div class="step">{{ Session::get('level', 1) }}/10</div>
