@@ -21,21 +21,25 @@ $(document).ready(function(e) {
 
 	// CHECK QUESTION
 	$('.answers a').click(function() {
-		qid = $(this).data('id');
-		uid = $(this).data('uid');
-		step = $('.step span').html();
+		if(!$('.answers').hasClass('inactive')) {
+			$('.answers').addClass('inactive');
 
-		console.log(step);
+			qid = $(this).data('id');
+			uid = $(this).data('uid');
+			step = $('.step span').html();
 
-		$.get(base_url + '/check-answer?uid=' + uid, function(data) {
-			console.log(data);
-			if(data == "true") {
-				// ANSWER CORRECT
-				$('#a'+step).addClass('correct');
-			} else {
-				// ANSWER WRONG
-				$('#a'+step).addClass('wrong');
-			}
-		});
+			console.log(step);
+
+			$.get(base_url + '/check-answer?uid=' + uid, function(data) {
+				console.log(data);
+				if(data == "true") {
+					// ANSWER CORRECT
+					$('#a'+step).addClass('correct');
+				} else {
+					// ANSWER WRONG
+					$('#a'+step).addClass('wrong');
+				}
+			});
+		}
 	});
 });
