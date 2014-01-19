@@ -18,4 +18,13 @@ $(document).ready(function(e) {
 	$('#show-answer').click(function(e) {
 		console.log('show-answer');
 	});	
+
+	// CHECK QUESTION
+	$('.answers a').click(function() {
+		qid = $(this).data('id')
+		uid = $(this).data('uid');
+
+		console.log(qid);
+		console.log(uid);
+	});
 });
