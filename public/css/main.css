@@ -102,8 +102,32 @@ z-index: 10;
 .start .links a {
 	padding-left: 10px;
 	padding-right: 10px;
+	
 }
-
+.start .links a img {
+			-webkit-transition: all .2s ease;
+	
+}
+.start .links a:hover img {
+		-webkit-transform: scale(1.1) rotate(1deg) ;
+	
+}
+.start .links a:hover img {
+		-webkit-transform: scale(0.8) rotate(-2deg) ;
+	
+}
+.next-q, .finish-modal a {
+				-webkit-transition: all .2s ease;
+	
+}
+.next-q:hover, .finish-modal a:hover {
+		-webkit-transform: scale(1.1) rotate(1deg) ;
+	
+}
+.next-q:active, .finish-modal a:active {
+		-webkit-transform: scale(0.8) rotate(-2deg) ;
+	
+}
 .start .links {
 }
 .start .profile-images {
@@ -290,10 +314,18 @@ text-shadow: 2px 3px 0 #442204, -1px -1px 0 #442204, 1px -1px 0 #442204, -1px 1p
 	position: absolute;
 	right: 6px;
 	top: 13px;
+		-webkit-transition: all .2s ease-in-out;
+	
+}
+.quiz .header .stats .money  .add-more:hover {
+	-webkit-transform: scale(1.1) rotate(-1deg) ;
+
 }
 
+.quiz .header .stats .money  .add-more:active {
+	-webkit-transform: scale(0.7) rotate(2deg) ;
 
-
+}
 
 
 
@@ -340,6 +372,17 @@ height: 49px;
 	text-decoration: none;
 	font-variant: normal;
 	text-transform: none;
+	
+		-webkit-transition: all .2s ease-out;
+	
+}
+.quiz .header .options a:hover {
+		-webkit-transform: scale(1.1) rotate(-1deg) ;
+	
+}
+.quiz .header .options a:active {
+		-webkit-transform: scale(0.7) rotate(-1deg) ;
+	
 }
 .quiz .header .options a span {
 	font-size: 14px;
@@ -447,6 +490,7 @@ margin: 0;
 	top: 170px;
 	z-index: 2;
 	padding-right: 30px;
+	width: 680px;
 }
 .quiz .body .answers a {
 	background: url(../img/answ-bg.png) center center no-repeat;
@@ -463,8 +507,15 @@ margin: 0;
 	margin-right: 30px;
 	margin-bottom: 20px;
 	text-decoration: none;
+		-webkit-transition: all .2s ease-in-out;
+	
 }
+.quiz .body .answers a:hover{	-webkit-transform: scale(1.05);
 
+}
+.quiz .body .answers a:active{
+-webkit-transform: scale(0.9) ;
+}
 
 .quiz .body .answers a span {
 border-radius: 50%;
@@ -528,9 +579,226 @@ display: inline-block;
 	background: url(../img/bites.png) center center !important;
 
 }
+.quiz .footer .quiz-dude {
+position: absolute;
+bottom: 55px;
+right: -71px;
+width: 221px;
+height: 353px;
+z-index: 0;
+	background: url(../img/quiz-dude.png) center center no-repeat scroll;
+}
+.quiz .footer .menu {
+	width: 71px;
+	height: 69px;
+	position: absolute;
+	right: 30px;
+	bottom: 70px;
+	z-index: 6;
+}
+.quiz .footer .menu .icon {
+	background: url(../img/menu-icon.png) center center no-repeat scroll;
+width: 72px;
+height: 73px;
+	position: absolute;
+	z-index: 6;
+	cursor: pointer;
+		-webkit-transition: all .2s ease-in-out;
+	
+}
+.quiz .footer .menu .icon:hover {
+	
+		-webkit-transform: scale(1.1) rotate(2deg) ;
+	
+}
+.quiz .footer .menu .icon:active {
+		-webkit-transform: scale(0.9) rotate(-1deg) ;
+
+}
+.quiz .footer .menu .pop {
+	width: 58px;
+	  background-color: rgb( 165, 123, 49 );
+height:0px;
+position: absolute;
+overflow: hidden;
+right: 6px;	  
+bottom: 10px;
+border-radius: 50px;
+z-index: 2;
+padding-top: 22px;
+	  transition: all 0.2s ease-in-out; 
+}
+.quiz .footer .menu:hover .pop {
+height: 275px;
+
+}
+.quiz .footer .menu .pop a {
+width: 54px;
+height: 50px;
+display: block;
+z-index: 7;
+position: relative;
+left: 2px;
+	-webkit-transition: all .2s ease;
+
+}
+.quiz .footer .menu .pop a:hover {
+ 	-webkit-transform: scale(1.1) rotate(2deg) ;
+ 
+ }
+ .quiz .footer .menu .pop a:active {
+  	-webkit-transform: scale(0.8) rotate(0deg) ;
+  
+  }
+.quiz .footer .menu .pop a.cup {
+	background: url(../img/quiz-menu-sprite.png) center top no-repeat;
+}
+.quiz .footer .menu .pop a.cash {
+	background: url(../img/quiz-menu-sprite.png) center 33% no-repeat;
+}
+.quiz .footer .menu .pop a.help {
+	background: url(../img/quiz-menu-sprite.png) center 73% no-repeat;
+}
+.quiz .footer .menu .pop a.profile {
+	background: url(../img/quiz-menu-sprite.png) center 109% no-repeat;
+}
+.loading {
+	position: absolute;
+	width: 100%;
+	background: url(../img/loading-text.png) center top no-repeat scroll;
+	top: 100px;
+	height: 150px;
+	text-align: center;
+	padding-top: 70px;
+}
 
 
 
+
+#mask { position:absolute; left:0; top:0; z-index:9000; background-color:#000; display:block;
+width: 100%;
+height:150%;
+opacity: 0.4;
+ }
+.finish-modal {
+	background: url(../img/quiz-finish-modal-bg.png) center center no-repeat scroll;
+	width: 468px;
+	height: 288px;
+	position: absolute;
+	z-index: 90090;
+	left: 50%;
+	top: 50%;
+	margin-left: -234px;
+	margin-top: -144px;
+	text-align: center;
+}
+.next-q {
+	background: url(../img/next-q.png) center center no-repeat scroll;
+	width: 468px;
+	height: 288px;
+	position: absolute;
+	z-index: 90090;
+	left: 50%;
+	top: 50%;
+	margin-left: -234px;
+	margin-top: -144px;
+	text-align: center;
+}
+.next-q a {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.finish-modal p {
+font: normal normal 30px/35px 'Carter One', cursive;
+text-shadow: 2px 3px 0 #442204, -1px -1px 0 #442204, 1px -1px 0 #442204, -1px 1px 0 #442204, 1px 1px 0 #442204;
+color: #FFF;
+position: relative;
+top: 100px;
+	
+}
+.finish-modal a {
+	width: 80px;
+	height: 80px;
+	background: red;
+	display: inline-block;
+	top: 100px;
+	position: relative;
+}
+.finish-modal a.accept {
+	background: url(../img/accept.png) center center no-repeat scroll;
+}
+.finish-modal a.retry {
+		background: url(../img/retry.png) center center no-repeat scroll;
+	
+}
+.quiz.leaderboard .header h1 {
+	font: normal normal 50px/25px 'Carter One', cursive;
+	text-shadow: 2px 3px 0 #442204, -1px -1px 0 #442204, 1px -1px 0 #442204, -1px 1px 0 #442204, 1px 1px 0 #442204;
+	color: #FFF;
+	text-align: center;
+	top: 125px;
+	position: absolute;
+	width: 100%;
+}
+.quiz.leaderboard .position {
+	width: 212px;
+	height: 220px;
+	background: url(../img/cup.png) left top no-repeat;
+	display: inline-block;
+	position: relative;
+	left: 60px;
+	top: 60px;
+	text-align: center;
+}
+.quiz.leaderboard .position span {
+text-align: center;
+color: #a57b31;
+top: 10px;
+position: relative;
+	font-size: 66px;
+	font-family: 'Carter One', cursive;
+	
+}
+
+.col-led {
+	width: 380px;
+	height: 400px;
+	display: inline-block;
+	position: absolute;
+	right: 70px;
+	
+}
+
+.col-led .person {
+	font: normal normal 20px/50px 'Carter One', cursive;
+	text-shadow: 2px 3px 0 #442204, -1px -1px 0 #442204, 1px -1px 0 #442204, -1px 1px 0 #442204, 1px 1px 0 #442204;
+	color: #FFF;
+}
+.col-led .person.current {
+	font: normal normal 20px/50px 'Carter One', cursive;
+	text-shadow: 2px 3px 0 #442204, -1px -1px 0 #442204, 1px -1px 0 #442204, -1px 1px 0 #442204, 1px 1px 0 #442204;
+	color: #8dc63f;
+}
+.col-led .person span {
+	position: absolute;
+	right: 0;
+}
+.lets-play {
+	background: url(../img/lets-play.png) center center no-repeat scroll;
+	display: block;
+	width: 200px;
+	height: 50px;
+	position: relative;
+	top: 140px;
+	-webkit-transition: all .2s ease-in-out;
+}
+.lets-play:hover {
+	-webkit-transform: scale(1.1) rotate(2deg) ;
+}
+.lets-play:active {
+	-webkit-transform: scale(0.8) rotate(-2deg) ;
+}
 @-webkit-keyframes mymove /* Safari and Chrome */
 {
 from {width:0%;}
