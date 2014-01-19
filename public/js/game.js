@@ -40,14 +40,12 @@ $(document).ready(function(e) {
 			qid = $(this).data('id');
 			uid = $(this).data('uid');
 			step = $('.step span').html();
-
+  
 			$('.step span').html(Number(step)+1);
 
 			if(Number(step)+1 == 10) {
 				window.location = base_url;
 			}
-
-			console.log(uid);
 
 			$.get(base_url + '/check-answer?uid=' + uid, function(data) {
 				if(data == "true") {
