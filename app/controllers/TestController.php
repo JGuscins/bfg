@@ -18,7 +18,7 @@ class TestController extends BaseController {
 		    $data = json_decode($ret);
 
 			foreach ($data->responseData->results as $key => $result) {
-				$if($key == 0) {
+				if($key == 0) {
 					return array('url' => $result->url);
 				}
 			}
