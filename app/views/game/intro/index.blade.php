@@ -16,7 +16,7 @@
 					<span>
 						<?php
 							$coins = Auth::user()->coins;
-							$level = round($coint/100);
+							$level = round($coins/100);
 
 							echo $level;
 						?>
