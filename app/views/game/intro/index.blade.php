@@ -16,12 +16,16 @@
 					<span>
 						<?php
 							$points = Auth::user()->points;
+							$level = $points/100;
+							$level = round($level);
 
 							if($points > 100) {
 								$real = $points-100;
 							} else {
 								$real = $points;
 							}
+
+							echo $level;
 						?>
 					</span>
 				</div>
