@@ -61,14 +61,15 @@
 	    	</div>
 	    </div>
 	    <div class="answers">
-	    	<a id="q1" data-uid="" href="#"><span class="first-name"></span><br>
-	    	<span class="last-name"></span> <span><img class="profile-image" src="img/placeholder-dude.jpg"></span></a>
-	    	<a id="q2" data-uid="" href="#"><span class="first-name"></span><br>
-	    	<span class="last-name"></span> <span><img class="profile-image" src="img/placeholder-dude.jpg"></span></a>
-	    	<a id="q3" data-uid="" href="#"><span class="first-name"></span><br>
-	    	<span class="last-name"></span> <span><img class="profile-image" src="img/placeholder-dude.jpg"></span></a>
-	    	<a id="q4" data-uid="" href="#"><span class="first-name"></span><br>
-	    	<span class="last-name"></span> <span><img class="profile-image" src="img/placeholder-dude.jpg"></span></a>
+	    	@foreach($q['answers'] as $key => $item)
+	    		<?php 
+	    			$name = explode(' ', $item['name']);
+	    			$first_name = $name[0];
+	    			$last_name = $name[1];
+	    		?>
+				<a id="q{{ $key }}" data-uid="" href="#"><span class="first-name">{{ $first_name }}</span><br>
+	    		<span class="last-name">{{ $last_name }}</span> <span><img class="profile-image" src="{{ str_replace('?type=large', '?width=500&height=500', $item['pictrue']) }}"></span></a>
+	    	@endforeach
 	    </div>
 	    <div class="footer">
 		    <div class="game-progress">
