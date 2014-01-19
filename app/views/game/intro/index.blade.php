@@ -61,7 +61,7 @@
 	    	</div>
 	    </div>
 	    <div class="answers">
-	    	@foreach($q['answers'] as $key => $item)
+	    	@foreach($question['answers'] as $key => $item)
 	    		<?php 
 	    			$name = explode(' ', $item['name']);
 	    			$first_name = $name[0];
