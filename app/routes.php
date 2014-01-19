@@ -479,10 +479,14 @@ Route::get('get-question', function() {
 
             $user = User::find(Auth::user()->id);
 
-            $badge = New Badge();
-            $badge->uid = $uid;
-            $badge->badge = "logged_in";
-            $badge = $user->badges()->save($badge);
+            if($user->quiz == 0) {
+                $badge = New Badge();
+                $badge->badge = "logged_in";
+                $badge = $user->badges()->save($badge);
+
+                $user->quiz = 1;
+                $user->save();
+            }
 
         } else {
             $step = $step+1;
@@ -783,7 +787,6 @@ Route::get('login/fb/callback', function() {
         $profile = $user->profiles()->save($profile);
 
         $badge = New Badge();
-        $badge->uid = $uid;
         $badge->badge = "logged_in";
         $badge = $user->badges()->save($badge);
     }
