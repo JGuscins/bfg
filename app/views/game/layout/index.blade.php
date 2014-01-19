@@ -3,6 +3,13 @@
   <head>
     <title><?php _('BFG') ;?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:type"                   content="og:product" />
+	<meta property="og:title"                  content="Best Friends Game" />
+	<meta property="og:image"                  content="" />
+	<meta property="og:description"            content="Do you think you're a good friend?" />
+	<meta property="og:url"                    content="http://www.bestfriendsgame.com/" />
+	<meta property="product:price:amount"      content="5"/>
+	<meta property="product:price:currency"    content="EUR"/>
     <link href="{{ URL::to('packages/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::to('packages/css/game.css') }}" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -28,19 +35,19 @@
         });   
 
         function buy() {
-          // var obj = {
-          //   method: 'pay',
-          //   action: 'purchaseitem',
-          //   product: 'http://bfg.mobbi.lv/test.html',
-          //   request_id: 1137,
-          //   quantity: 1
-          // };
+           var obj = {
+             method: 'pay',
+             action: 'purchaseitem',
+             product: 'http://bfg.mobbi.lv/test.html',
+             request_id: 1137,
+             quantity: 1
+          };
 
-          var obj = {
+          /*var obj = {
             method: 'apprequests',
             message: 'My Great Request',
             data: '{"user_invited":me}'
-          };
+          };*/
 
           FB.ui(obj, function(data) {
             console.log(JSON.stringify(data));
