@@ -71,13 +71,13 @@ $(document).ready(function(e) {
 			}
 
 			$.each(data.answers, function(key, value) {
-				key = key+1;
+				newkey = key+1;
 
 				myString = value.name
 				myArray = myString.split(' ');
 
-	    		$('#q'+key).html(''+ myArray[0] +'<br>'+ myArray[1] +' <span><img class="profile-image" src="'+ value.picture +'"></span>');
-	    		$('#g'+key).data('id', key).data('uid', value.uid);
+	    		$('#q'+newkey).html(''+ myArray[0] +'<br>'+ myArray[1] +' <span><img class="profile-image" src="'+ value.picture +'"></span>');
+	    		$('#g'+newkey).data('id', newkey).data('uid', value.uid);
 			});
 		});
 	}
