@@ -22,14 +22,14 @@
 	    		@endif
 	    	@endforeach
 	    </div>
-		<div class="links" style="display: none;">
+		<div class="links">
 			<a href="#" onclick="window.location.href='/login/fb/';"><img src="{{ URL::to('img/lets-play-bttn.png') }}"></a>
 			<a id="invite" href="#"><img src="{{ URL::to('img/invite-friends-bttn.png') }}"></a>
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			$('.links').hide().animate({'opacity':0.1},250).slideDown(500).fadeIn(1500,function(){ $(this).animate({'opacity':1},500); });
-		});
+		/*$(document).ready(function(){
+			$('.links').animate({'opacity':0.1},250).slideDown(500).fadeIn(1500,function(){ $(this).animate({'opacity':1},500); });
+		});*/
 	</script>
 @stop
