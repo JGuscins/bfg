@@ -39,8 +39,6 @@ $(document).ready(function(e) {
 			qid = $(this).data('id');
 			uid = $(this).data('uid');
 			step = $('.step span').html();
-  
-			console.log(uid);
 
 			$('.step span').html(Number(step)+1);
 
@@ -48,7 +46,7 @@ $(document).ready(function(e) {
 				window.location = base_url;
 			}
 
-			$.get(base_url + '/check-answer?uid=' + uid, function(data) {
+			$.get(base_url + '/check-answer?uid=' + $(this).data('uid'), function(data) {
 				if(data == "true") {
 					// ANSWER CORRECT
 					$('#a'+step).addClass('right');
