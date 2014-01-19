@@ -44,7 +44,7 @@ $(document).ready(function(e) {
 
 			$('.step span').html(Number(step)+1);
 
-			if(Number(step)+1 == 10) {
+			if(Number(step)+1 == 11) {
 				window.location = base_url;
 			}
 
