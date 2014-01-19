@@ -4,18 +4,15 @@ class TestController extends BaseController {
 
 	public function index()
 	{
-$link = "http://images.google.com/images?q=flying&tbm=isch";
-$code = file_get_contents($link,'r');
+		$json = get_url_contents('http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=korn');
 
-$img = preg_replace ("#imgurl\=http:\/\/www\.[A-Za-z0-9-]*\.[A-Za-z]*[^\.]*\.[A-Za-z]*#", $code, $img);
-preg_replace ("#http://(.*)#", $img[0], $img_pic);
+		$data = json_decode($json);
 
-$firstImage = $img_pic[0];
-$firstImage = trim("$firstImage");
-echo "$firstImage<br><br>";
+		foreach ($data->responseData->results as $result) {
+		    $results[] = array('url' => $result->url, 'alt' => $result->title);
+		}
 
-// Display image
-echo "<img src=\"$firstImage\">";
+		dd($result);
 	}
 	
 	public function post() {
