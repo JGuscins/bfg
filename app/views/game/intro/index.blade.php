@@ -84,9 +84,5 @@
 	    </div>
 	</div>	
 </div>
-<script type="text/javascript">
-	$(document).ready(function() {
-		getQuestion();
-	});
-</script>
+{{ var_dump($q) }}
 @stop

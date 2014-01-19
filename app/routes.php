@@ -5,10 +5,216 @@ Route::any('testpost', 'TestController@post');
 
 // GAME
 Route::any('/', ['before' => 'auth', function() {
-    $user = Auth::user();
+    // RANDOM CATEGORY
+    $random = rand(0,7);
+    $c = ['Picture', 'Employment', 'Education', 'Birthdate', 'Book', 'Music', 'Movie', 'Interest'];
+    $c_table = ['url', 'employer_1', 'school_1_name', 'birthdate', 'book', 'music', 'movies', 'interests'];
+    $c_question = ['Picture:', 'Employment:', 'Education:', 'Birthdate:', 'Book:', 'Music:', 'Movie:', 'Interest:'];
+    $category = $c[$random];
+
+    // GET CORRECT ANSWER
+    $question = $category::where($c_table[$random], '!=', '')->orderBy(DB::raw('RAND()'))->first();
+
+    // GET CORRECT ANSWER UID
+    $q['uid'] = $question->id;
+    $q['type'] = $category;
+    $q['name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$q['uid'].'?fields=name'))->name;
+    $q['picture'] = 'https://graph.facebook.com/'.$q['uid'].'/picture?type=large';
+
+    if($category == "Picture") {
+        // QUESTION ABOUT PROFILE PICTURE
+        $q['title'] = $c_question[$random];
+        $q['question'] = $question->url;
+
+        // ANSWERS
+        $q['answers'] = $category::where('url', '!=', $q['question'])->take(3)->get();
+    } elseif($category == "Employment") {
+        $q['title'] = $c_question[$random];
+
+        if($question->employer_3 != '') {
+            $r = rand(1,3);
+
+            if($r == 1) {
+                $q['question'] = $question->employer_1;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+            } elseif($r == 2) {
+                $q['question'] = $question->employer_2;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`employer_2`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+            } else {
+                $q['question'] = $question->employer_3;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`employer_3`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+            }
+        } elseif($question->employer_2 != '') {
+            $r = rand(1,2);
+
+            if($r == 1) {
+                $q['question'] = $question->employer_1;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+            } else {
+                $q['question'] = $question->employer_2;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`employer_2`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+            }
+        } else {
+            $q['question'] = $question->employer_1;
+            // ANSWERS
+            $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+        }
+    } elseif($category == "Education") {
+        $q['title'] = $c_question[$random];
+
+        if($question->school_3_name != '') {
+            $r = rand(1,3);
+
+            if($r == 1) {
+                $q['question'] = $question->school_1_name;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+            } elseif($r == 2) {
+                $q['question'] = $question->school_2_name;
+                // school_2_name
+                $q['answers'] = $category::where(DB::raw('`school_2_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+            } else {
+                $q['question'] = $question->school_3_name;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`school_3_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+            }
+        } elseif($question->school_2_name != '') {
+            $r = rand(1,2);
+
+            if($r == 1) {
+                $q['question'] = $question->school_1_name;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+            } else {
+                $q['question'] = $question->school_2_name;
+                // ANSWERS
+                $q['answers'] = $category::where(DB::raw('`school_2_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+            }
+        } else {
+            $q['question'] = $question->school_1_name;
+            // ANSWERS
+            $q['answers'] = $category::where(DB::raw('`school_1_name`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+        }
+    } elseif($category == "Birthdate") {
+        $q['title'] = $c_question[$random];
+        $q['question'] = $question->birthdate;
+        // ANSWERS
+        $q['answers'] = $category::where('birthdate', '!=', $q['question'])->take(3)->get();
+    } elseif($category == "Book") {
+        $q['title'] = $c_question[$random];
+
+        $books = explode(', ', $question->book);
+        $segments = count($books)-1;
+
+        $r = rand(0, $segments);
+
+        $q['question'] = $books[$r];
+        $q['image'] = BaseController::search_image($books[$r]);
+
+        // ANSWERS
+        $q['answers'] = $category::where(DB::raw('`book`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+    } elseif($category == "Music") {
+        $q['title'] = $c_question[$random];
+
+        $music = explode(', ', $question->music);
+        $segments = count($music)-1;
+
+        $r = rand(0, $segments);
+
+        $q['question'] = $music[$r];
+        $q['image'] = BaseController::search_image($music[$r]);
+
+        // ANSWERS
+        $q['answers'] = $category::where(DB::raw('`music`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+    } elseif($category == "Movie") {
+        $q['title'] = $c_question[$random];
+
+        $movies = explode(', ', $question->movies);
+        $segments = count($movies)-1;
+
+        $r = rand(0, $segments);
+
+        $q['question'] = $movies[$r];
+        $q['image'] = BaseController::search_image($movies[$r]);
+
+        // ANSWERS
+        $q['answers'] = $category::where(DB::raw('`movies`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+    } elseif($category == "Interest") {
+        $q['title'] = $c_question[$random];
+
+        $interests = explode(', ', $question->interests);
+        $segments = count($interests)-1;
+
+        $r = rand(0, $segments);
+
+        $q['question'] = $interests[$r];
+
+        // ANSWERS
+        $q['answers'] = $category::where(DB::raw('`interests`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
+    }
+
+
+    // GET ANSWER
+    foreach($q['answers'] as $answer) {
+        $a['answers'][] = [
+            'uid' => $answer['id'], 
+            'name' => json_decode(file_get_contents('http://graph.facebook.com/'.$answer['id'].'?fields=name'))->name, 
+            'picture' => 'https://graph.facebook.com/'.$answer['id'].'/picture?type=large',
+        ];
+    }
+
+    $q['answers'] = $a['answers'];
+    $q['answers'][] = ['uid' => $q['uid'], 'name' => $q['name'], 'picture' => $q['picture']];
+    
+    // STORE CORRECT UID
+    Session::put('correct_uid', $q['uid']);
+    Session::put('answers', $q['answers']);
+
+    // LEVEL
+    if(Session::get('step')) {
+        $step = Session::get('step');
+        if($step == 10) {
+            Session::put('step', 1);
+
+            $user = User::find(Auth::user()->id);
+
+            if($user->quiz == 0) {
+                $badge = New Badge();
+                $badge->badge = "first_quiz";
+                $badge = $user->badges()->save($badge);
+
+                $user->quiz = 1;
+                $user->save();
+
+                $profile = Profile::where('uid', Session::get('uid'))->first();
+
+                $facebook = new Facebook(Config::get('facebook'));
+                $facebook->setAccessToken($profile->access_token);
+
+                $facebook->api('/me/feed', 'post', array(
+                    'message' => 'Hell yeah! Just passed my first Best Friends Game quiz and challenge! So cool... Come and try it!',
+                    'name' => 'Best Friend Game',
+                    'picture' => 'https://graph.facebook.com/guscins/picture?type=large',
+                    'link' => 'http://apps.facebook.com/bestfriendsgameapp/',
+                ));
+
+            }
+
+        } else {
+            $step = $step+1;
+            Session::put('step', $step);
+        }
+    } else {
+        Session::put('step', 1);
+    }
 
     return View::make('game.intro.index')
-            ->with('user', $user);
+            ->with('question', $q);
 }]);
 
 Route::get('stop-timer', function() {

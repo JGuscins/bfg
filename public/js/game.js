@@ -18,8 +18,4 @@ $(document).ready(function(e) {
 	$('#show-answer').click(function(e) {
 		console.log('show-answer');
 	});	
-
-	function getQuestion() {
-		console.log('get-question');
-	}
 });
