@@ -46,8 +46,8 @@
 	    <div class="question">
 	    	<div class="visual">
 	    		<div class="border">
-	    			@if($q['type'] == "Music" || $q['type'] == "Movie" || $q['type'] == "Book")
-	    				<img id="question-image" src="{{ $q['image'] }}">
+	    			@if($question['type'] == "Music" || $question['type'] == "Movie" || $question['type'] == "Book")
+	    				<img id="question-image" src="{{ $question['image'] }}">
 	    			@else
 	    				<img id="question-image" src="img/placeholder-dude.jpg">
 	    			@endif
@@ -56,7 +56,7 @@
 	    	<div class="col">
 	    	<div class="heading">Question:</div>
 	    	<h1 id="question">
-	    		{{ $q['title'] }} {{ $q['question'] }}?
+	    		{{ $question['title'] }} {{ $question['question'] }}?
 	    	</h1>
 	    	</div>
 	    </div>
