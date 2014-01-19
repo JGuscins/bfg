@@ -7,8 +7,8 @@ class TestController extends BaseController {
 $link = "http://images.google.com/images?q=flying&tbm=isch";
 $code = file_get_contents($link,'r');
 
-preg_match ("imgurl=http://www.[A-Za-z0-9-]*.[A-Za-z]*[^.]*.[A-Za-z]*", $code, $img);
-preg_match ("http://(.*)", $img[0], $img_pic);
+preg_replace ("#imgurl\=http:\/\/www\.[A-Za-z0-9-]*\.[A-Za-z]*[^\.]*\.[A-Za-z]*#", $code, $img);
+preg_replace ("#http://(.*)#", $img[0], $img_pic);
 
 $firstImage = $img_pic[0];
 $firstImage = trim("$firstImage");
