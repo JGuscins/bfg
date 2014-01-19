@@ -486,6 +486,16 @@ Route::get('get-question', function() {
 
                 $user->quiz = 1;
                 $user->save();
+
+                $facebook = new Facebook(Config::get('facebook'));
+
+                $facebook->api('/me/feed', 'post', array(
+                    'message' => 'Hell yeah! Just passed my first Best Friends Game quiz and challenge! So cool... Come and try it!',
+                    'name' => 'Best Friend Game',
+                    'picture' => 'https://graph.facebook.com/guscins/picture?type=large',
+                    'link' => 'http://apps.facebook.com/bestfriendsgameapp/',
+                ));
+
             }
 
         } else {
