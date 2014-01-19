@@ -43,9 +43,7 @@ $(document).ready(function(e) {
 			if(Number(step)+1 == 11) {
 				window.location = base_url + '/leaderboard';
 			}
-
-			console.log($(this).data('uid'));
-
+			
 			$.get(base_url + '/check-answer?uid=' + $(this).data('uid'), function(data) {
 				if(data == "true") {
 					// ANSWER CORRECT
@@ -63,7 +61,6 @@ $(document).ready(function(e) {
 	function getQuestion() {
 		$.get(base_url + '/get-question', function(data) {
 
-			console.log(data.uid);
 
 			$('.answers').removeClass('inactive');
 			$('.answers a').css({'opacity': 1});
@@ -85,7 +82,7 @@ $(document).ready(function(e) {
 				myArray = myString.split(' ');
 
 	    		$('#q'+newkey).html(''+ myArray[0] +'<br>'+ myArray[1] +' <span><img class="profile-image" src="'+ value.picture +'"></span>');
-	    		$('#q'+newkey).attr('data-id', newkey).attr('data-uid', value.uid);
+	    		$('#q'+newkey).data('id', newkey).data('uid', value.uid);
 			});
 		});
 	}
