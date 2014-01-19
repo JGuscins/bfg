@@ -41,7 +41,7 @@ $(document).ready(function(e) {
 			uid = $(this).data('uid');
 			step = $('.step span').html();
 
-			$('.step span').html(step+1);
+			$('.step span').html(Number(step)+1);
 
 			$.get(base_url + '/check-answer?uid=' + uid, function(data) {
 				console.log(data);
