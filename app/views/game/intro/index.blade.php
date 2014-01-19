@@ -15,12 +15,12 @@
 				<div class="frame">
 					<span>
 						<?php
-							$coins = Auth::user()->coins;
+							$points = Auth::user()->points;
 
-							if($coins > 100) {
-								$real = $coins-100;
+							if($points > 100) {
+								$real = $points-100;
 							} else {
-								$real = $coins;
+								$real = $points;
 							}
 						?>
 					</span>
