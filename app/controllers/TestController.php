@@ -4,7 +4,7 @@ class TestController extends BaseController {
  
 	public function index()
 	{
-		$test = Employment::select(DB::raw('WHERE `id` IN (SELECT `id` FROM `profiles` WHERE `employer_1` NOT LIKE "PokerStars" AND `friends` LIKES "%%,\"id\":\"'.Session::get('uid').'\"}%%")'));
+		$test = Employment::select(DB::raw('WHERE `id` IN (SELECT `id` FROM `profiles` WHERE `employer_1` NOT LIKES "PokerStars" AND `friends` LIKES "%%,\"id\":\"'.Session::get('uid').'\"}%%")'));
 		dd($test);
 	}
 	
