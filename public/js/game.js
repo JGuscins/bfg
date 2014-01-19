@@ -64,6 +64,11 @@ $(document).ready(function(e) {
 
 	function getQuestion() {
 		$.get(base_url + '/get-question', function(data) {
+
+			console.log(data);
+			console.log($('.answers a'));
+
+
 			$('.answers').removeClass('inactive');
 			$('.answers a').css({'opacity': 1});
 
