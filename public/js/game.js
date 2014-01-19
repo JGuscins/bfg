@@ -72,6 +72,7 @@ $(document).ready(function(e) {
 				$('#question-image').attr('src', data.question);
 				$('#question').html(data.title);
 			} else {
+				$('#question-image').atr('src', 'http://www.sylvain-lader.fr/wp-content/uploads/2012/07/placeholder.jpg');
 				$('#question').html(data.title + ' ' + data.question);
 			}
 
