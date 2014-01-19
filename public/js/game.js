@@ -51,7 +51,15 @@ $(document).ready(function(e) {
 					// ANSWER WRONG
 					$('#a'+step).addClass('wrong');
 				}
+
+				setTimeout(getQuestion(), 500);
 			});
 		}
 	});
+
+	function getQuestion() {
+		$.get(base_url + '/get-question', function(data) {
+			console.log(data);
+		});
+	}
 });
