@@ -8,8 +8,9 @@ class BaseController extends Controller {
 	 * @return void
 	 */
 
-	public static function search_image($url) {
-		$url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='.$url;
+	public static function search_image($link) {
+		$link = urlencode($link);
+		$url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='.$link;
 
 		return $url;
 
