@@ -42,7 +42,7 @@
 	    	<a id="show-answer" class="show-ans" href="#"><span>3</span></a>
 	    </div>
     </div>
-    <div class="body">
+    <div class="body">  
 	    <div class="question">
 	    	<div class="visual">
 	    		<div class="border">
