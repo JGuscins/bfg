@@ -1,12 +1,11 @@
 $(document).ready(function(e) {
 	// 50-50
-	$('#50-50').click(function(e) {
-		console.log('50-50');
+	$('#50-50').click(function(e) {	
 		if(!$('.answers').hasClass('inactive')) {
 			$.get(base_url + '/50-50', function(data) {
 				console.log(data);
 				if(data != "false") {
-					console.log(data);
+					
 				}
 			});
 		}
