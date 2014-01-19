@@ -67,13 +67,13 @@ $(document).ready(function(e) {
 
 			if(data.type == "Music" || data.type == "Movie" || data.type == "Book") {
 				$('#question-image').attr('src', data.picture);
-				$('#question').html(data.title + ' ' + data.question);
+				$('#question').html(data.title + ' ' + data.question + '?');
 			} else if(data.type == "Picture") {
 				$('#question-image').attr('src', data.question);
 				$('#question').html(data.title);
 			} else {
 				$('#question-image').attr('src', 'http://www.sylvain-lader.fr/wp-content/uploads/2012/07/placeholder.jpg');
-				$('#question').html(data.title + ' ' + data.question);
+				$('#question').html(data.title + ' ' + data.question + '?');
 			}
 
 			$.each(data.answers, function(key, value) {
