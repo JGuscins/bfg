@@ -79,7 +79,7 @@
 	    </div> 
 	    <div class="footer">
 		    <div class="game-progress">
-		    	<div class="step">{{ Session::get('step', 1) }}/10</div>
+		    	<div class="step"><span>{{ Session::get('step', 1) }}</span>/10</div>
 		    	<div class="bites">
 		    		<span id="a1" class=""></span>
 		    		<span id="a2" class=""></span>

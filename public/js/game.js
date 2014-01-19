@@ -21,11 +21,21 @@ $(document).ready(function(e) {
 
 	// CHECK QUESTION
 	$('.answers a').click(function() {
-		qid = $(this).data('id')
+		qid = $(this).data('id');
 		uid = $(this).data('uid');
+		step = $('.step span').html();
+
+		console.log(step);
 
 		$.get(base_url + '/check-answer?uid=' + uid, function(data) {
 			console.log(data);
+			if(data == "ture") {
+				// ANSWER CORRECT
+				$('#a'+step).addClass('correct');
+			} else {
+				// ANSWER WRONG
+				$('#a'+step).addClass('wrong');
+			}
 		});
 	});
 });
