@@ -1,0 +1,144 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* CORE */
+body {
+	background-color: #abdef2;
+}
+.container {
+	width: 772px;
+}
+.sprite {
+	background: url(../img/sprite.png) no-repeat 0 0;
+}
+
+/* HEADER */
+.logo {
+	width: 304px;
+	height: 102px;
+	margin: 10px auto;
+	background: url(../img/sprite.png) no-repeat 0 0;
+}
+header#mainHeader .container {
+	height: 175px;
+	background: url(../img/heading.png) no-repeat 0 0;
+}
+
+/* CONTENR */
+#content .container {
+	min-height: 300px;
+	background: url(../img/bg.png) repeat-y;
+}
+
+/* FOOTER */
+footer#mainFooter .container {
+	height: 93px;
+	background: url(../img/footer.png) no-repeat 0 0;
+}
+
+
+.time {
+	width: 154px;
+	height: 52px;
+	margin-left: 20px;
+	background-position: -304px 0;
+}
+.level {
+	width: 154px;
+	height: 52px;
+	margin-left: 10px;
+	background-position: -459px 0;
+}
+.coins {
+	width: 154px;
+	height: 52px;
+	background-position: -304px -104px;
+}
+.points {
+	width: 154px;
+	height: 52px;
+	margin-right: 20px;
+	background-position: -459px -104px;
+}
+
+.start {
+background: url('../img/splash-bg.png') no-repeat center top;
+
+	width: 800px;
+	height: 1024px;
+	position: relative;
+	margin: 0 auto;
+}
+.start .logo {	
+background: url('../img/bfg-logo.png') no-repeat center top;
+width: 580px;
+height: 370px;
+position: relative;
+z-index: 10;
+}
+.start .links {
+	background: url('../img/start-links-bg.png') no-repeat center center;
+
+	position: absolute;
+	top: 502px;
+	width: 100%;
+	height: 100px;
+	text-align: center;
+	padding-top: 13px;
+}
+.start .links > * {
+	border: none;
+	outline: none;
+}
+.start .links a {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.start .links {
+}
+.start .profile-images {
+	position: absolute;
+	top: 250px;
+}
+.start .profile-images div {
+border-radius: 50%;
+position: relative;
+border: 5px solid #FFF;
+overflow: hidden;
+display: inline-block;
+}
+.start .profile-images div img {
+
+	max-width: 100%;
+	min-height: 100%;
+ }
+.start .profile-images #first {
+	width: 180px;
+	height: 180px;
+right: -94px;
+top: 33px;
+}
+.start .profile-images #second {
+width: 160px;
+height: 160px;
+top: 55px;
+left: 64px;
+}
+.start .profile-images #third {
+width: 156px;
+height: 156px;
+top: 48px;
+left: 32px;
+}
+.start .profile-images #fourth {
+width: 191px;
+height: 191px;
+left: -3px;
+top: 23px;
+	
+}
+
