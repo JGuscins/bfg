@@ -2,7 +2,6 @@ $(document).ready(function(e) {
 	// 50-50
 	$('#50-50').click(function(e) {	
 		$.get(base_url + '/50-50', function(data) {
-			console.log(data);
 			if(data != "false") { 
 				$("a[data-uid='"+ data[0] +"']").css({'opacity': 0.5});
 				$("a[data-uid='"+ data[1] +"']").css({'opacity': 0.5});
@@ -12,12 +11,12 @@ $(document).ready(function(e) {
 
 	// STOP TIME
 	$('#stop-time').click(function(e) {
-		console.log('stop-time');
+
 	});	
 
 	// CHANGE QUESTION
 	$('#change-question').click(function(e) {
-		console.log('change-question');
+
 	});	
 
 	// SHOW ANSEER
@@ -41,6 +40,8 @@ $(document).ready(function(e) {
 			uid = $(this).data('uid');
 			step = $('.step span').html();
   
+			console.log(uid);
+
 			$('.step span').html(Number(step)+1);
 
 			if(Number(step)+1 == 10) {
@@ -64,9 +65,7 @@ $(document).ready(function(e) {
 	function getQuestion() {
 		$.get(base_url + '/get-question', function(data) {
 
-			console.log(data);
-			console.log($('.answers a'));
-
+			console.log(data.uid);
 
 			$('.answers').removeClass('inactive');
 			$('.answers a').css({'opacity': 1});
