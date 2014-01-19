@@ -67,5 +67,6 @@
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
     <script src="{{ URL::to('js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ URL::to('js/main.js') }}"></script>
+    <script src="{{ URL::to('js/game.js') }}"></script>
     </body>
 </html>
