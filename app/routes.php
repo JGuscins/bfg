@@ -736,7 +736,7 @@ Route::group(['prefix' => 'ajax'], function() {
         // FACEBOOK DATA
         $facebook = new Facebook(Config::get('facebook'));
         $data     = $facebook->api($query);
-
+ 
         // STORE DATA
         foreach ($data as $item) {
             $user = Interest::where('id', $item['uid'])->first();

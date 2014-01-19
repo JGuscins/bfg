@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="start">
-	    <div class="logo"></div>
+	    <div class="logo"></div> 
 	    <div class="profile-images">
 	    	@foreach($users as $key => $item)
 	    		<div id="@if($key == 0) first @elseif($key == 1) second @elseif($key == 2) third @else fourth @endif"><img src="{{ $item->photo }}"></div>
