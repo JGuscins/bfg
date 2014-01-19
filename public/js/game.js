@@ -59,7 +59,9 @@ $(document).ready(function(e) {
 
 	function getQuestion() {
 		$.get(base_url + '/get-question', function(data) {
-			console.log(data);
+			$('.answers').removeClass('active');
+			$('.answers a').css({'opacity': 1});
+
 			if(data.type == "Music" || data.type == "Movie" || data.type == "Book") {
 				$('#question-image').attr('src', data.picture);
 				$('#question').html(data.title + ' ' + data.question);
@@ -72,7 +74,11 @@ $(document).ready(function(e) {
 
 			$.each(data.answers, function(key, value) {
 				key = key+1;
-	    		$('#q'+key).html(''+ value.name +'<br>'+ value.name +' <span><img class="profile-image" src="'+ value.picture +'"></span>');
+
+				myString = value.name
+				myArray = myString.split(' ');
+
+	    		$('#q'+key).html(''+ myArray[0] +'<br>'+ myArray[1] +' <span><img class="profile-image" src="'+ value.picture +'"></span>');
 	    		$('#g'+key).data('id', key).data('uid', value.uid);
 			});
 		});
