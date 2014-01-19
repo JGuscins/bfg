@@ -24,7 +24,8 @@ $(document).ready(function(e) {
 		qid = $(this).data('id')
 		uid = $(this).data('uid');
 
-		console.log(qid);
-		console.log(uid);
+		$.get(base_url + '/check-answer?uid=' + uid, function(data) {
+			console.log(data);
+		});
 	});
 });
