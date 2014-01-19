@@ -43,7 +43,7 @@ $(document).ready(function(e) {
 			$('.step span').html(Number(step)+1);
 
 			if(Number(step)+1 == 11) {
-				window.location = base_url;
+				window.location = base_url + '/leaderboard';
 			}
 
 			$.get(base_url + '/check-answer?uid=' + $(this).data('uid'), function(data) {
