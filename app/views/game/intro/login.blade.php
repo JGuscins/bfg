@@ -10,7 +10,7 @@
 	    	<div id="fourth"><img src="{{ URL::to('img/placeholder-dude.jpg') }}"></div>
 	    </div>
 		<div class="links">
-			<a onclick="window.location.href='/login/fb/';"><img src="{{ URL::to('img/lets-play-bttn.png') }}"></a>
+			<a href="#" onclick="window.location.href='/login/fb/';"><img src="{{ URL::to('img/lets-play-bttn.png') }}"></a>
 			<a href="#"><img src="{{ URL::to('img/invite-friends-bttn.png') }}"></a>
 		</div>
 	</div>
