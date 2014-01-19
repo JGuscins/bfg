@@ -85,6 +85,8 @@
 	</div>	
 </div>
 <script type="text/javascript">
-	getQuestion();
+	$(document).ready(function() {
+		getQuestion();
+	});
 </script>
 @stop
