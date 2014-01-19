@@ -9,6 +9,8 @@ class BaseController extends Controller {
 	 */
 
 	public static function search_image($url) {
+		$url = 'http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='.$url;
+
 	    $crl = curl_init();
 
 	    curl_setopt($crl, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)');

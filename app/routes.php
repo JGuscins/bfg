@@ -168,6 +168,7 @@ Route::get('switch-question', function() {
             $r = rand(0, $segments);
 
             $q['question'] = $books[$r];
+            $q['image'] = BaseController::search_image($books[$r]);
 
             // ANSWERS
             $q['answers'] = $category::where(DB::raw('`book`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
@@ -180,6 +181,7 @@ Route::get('switch-question', function() {
             $r = rand(0, $segments);
 
             $q['question'] = $music[$r];
+            $q['image'] = BaseController::search_image($music[$r]);
 
             // ANSWERS
             $q['answers'] = $category::where(DB::raw('`music`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
@@ -192,6 +194,7 @@ Route::get('switch-question', function() {
             $r = rand(0, $segments);
 
             $q['question'] = $movies[$r];
+            $q['image'] = BaseController::search_image($movie[$r]);
 
             // ANSWERS
             $q['answers'] = $category::where(DB::raw('`movies`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
@@ -413,6 +416,7 @@ Route::get('get-question', function() {
         $r = rand(0, $segments);
 
         $q['question'] = $books[$r];
+        $q['image'] = BaseController::search_image($books[$r]);
 
         // ANSWERS
         $q['answers'] = $category::where(DB::raw('`book`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
@@ -425,6 +429,7 @@ Route::get('get-question', function() {
         $r = rand(0, $segments);
 
         $q['question'] = $music[$r];
+        $q['image'] = BaseController::search_image($music[$r]);
 
         // ANSWERS
         $q['answers'] = $category::where(DB::raw('`music`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
@@ -437,6 +442,7 @@ Route::get('get-question', function() {
         $r = rand(0, $segments);
 
         $q['question'] = $movies[$r];
+        $q['image'] = BaseController::search_image($movies[$r]);
 
         // ANSWERS
         $q['answers'] = $category::where(DB::raw('`movies`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
