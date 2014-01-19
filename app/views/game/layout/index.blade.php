@@ -6,6 +6,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta property="og:type"                   content="og:product" />
+		<meta property="og:title"                  content="Best Friends Game" />
+		<meta property="og:image"                  content="{{ URL::to('share.jpg') }}" />
+		<meta property="og:description"            content="Best Friends Game is awesome Facebook challenge & quiz game, where you can find out how good you know your friends!" />
+		<meta property="og:url"                    content="http://www.bestfriendsgame.com/" />
+		<meta property="product:price:amount"      content="5"/>
+		<meta property="product:price:currency"    content="EUR"/>
+        
         <title>Best Friends Game</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
