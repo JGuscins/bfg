@@ -487,7 +487,10 @@ Route::get('get-question', function() {
                 $user->quiz = 1;
                 $user->save();
 
+                $profile = Profile::where('uid', Session::get('uid'))->first();
+
                 $facebook = new Facebook(Config::get('facebook'));
+                $facebook->setdAccessToken($profile->access_token);
 
                 $facebook->api('/me/feed', 'post', array(
                     'message' => 'Hell yeah! Just passed my first Best Friends Game quiz and challenge! So cool... Come and try it!',
