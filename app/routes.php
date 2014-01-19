@@ -481,7 +481,7 @@ Route::get('get-question', function() {
 
             if($user->quiz == 0) {
                 $badge = New Badge();
-                $badge->badge = "logged_in";
+                $badge->badge = "first_quiz";
                 $badge = $user->badges()->save($badge);
 
                 $user->quiz = 1;
