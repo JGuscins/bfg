@@ -453,6 +453,9 @@ Route::get('50-50', function() {
         $answers = Session::get('answers');
         $correct = Session::get('correct_uid');
 
+        var_dump($correct);
+        var_dump($answers);
+
         foreach ($answers as $item) {
         	if ($correct == $item)
         		unset($item);
