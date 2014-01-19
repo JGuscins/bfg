@@ -2,7 +2,7 @@ $(document).ready(function(e) {
 	// 50-50
 	$('#50-50').click(function(e) {	
 		$.get(base_url + '/50-50', function(data) {
-			if(data != "false") {
+			if(data != "false") { 
 				$("a[data-uid='"+ data[0] +"']").css({'opacity': 0.5});
 				$("a[data-uid='"+ data[1] +"']").css({'opacity': 0.5});
 			}
