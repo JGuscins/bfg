@@ -59,7 +59,7 @@ $(document).ready(function(e) {
 
 	function getQuestion() {
 		$.get(base_url + '/get-question', function(data) {
-			$('.answers').removeClass('active');
+			$('.answers').removeClass('inactive');
 			$('.answers a').css({'opacity': 1});
 
 			if(data.type == "Music" || data.type == "Movie" || data.type == "Book") {
