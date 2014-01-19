@@ -73,7 +73,7 @@
 	    			$first_name = $name[0];
 	    			$last_name = $name[1];
 	    		?>
-				<a id="q{{ $key+1 }}" data-id="q{{ $key+1 }}" data-uid="{{ $item['uid'] }}" href="#">{{ $first_name }}<br>
+				<a id="q{{ $key+1 }}" data-id="{{ $key+1 }}" data-uid="{{ $item['uid'] }}" href="#">{{ $first_name }}<br>
 	    		{{ $last_name }} <span><img class="profile-image" src="{{ str_replace('?type=large', '?width=500&height=500', $item['picture']) }}"></span></a>
 	    	@endforeach
 	    </div> 
@@ -81,16 +81,16 @@
 		    <div class="game-progress">
 		    	<div class="step">{{ Session::get('step', 1) }}/10</div>
 		    	<div class="bites">
-		    		<span></span>
-		    		<span></span>
-		    		<span class=""></span>
-		    		<span class=""></span>
-		    		<span class=""></span>
-		    		<span class=""></span>
-		    		<span class=""></span>
-		    		<span class=""></span>
-		    		<span class=""></span>
-		    		<span class=""></span>
+		    		<span id="a1" class=""></span>
+		    		<span id="a2" class=""></span>
+		    		<span id="a3" class=""></span>
+		    		<span id="a4" class=""></span>
+		    		<span id="a5" class=""></span>
+		    		<span id="a6" class=""></span>
+		    		<span id="a7" class=""></span>
+		    		<span id="a8" class=""></span>
+		    		<span id="a9" class=""></span>
+		    		<span id="a10" class=""></span>
 		    	</div>
 		    </div>
 		    <div class="menu"></div>
