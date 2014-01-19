@@ -1,10 +1,16 @@
-
+@import url(http://fonts.googleapis.com/css?family=Carter+One);
+@import url(http://fonts.googleapis.com/css?family=Skranji:400,700);
 
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
 /* CORE */
+
+* {
+	-webkit-font-smoothing: antialiased;
+	
+}
 body {
 	background-color: #abdef2;
 }
@@ -19,7 +25,7 @@ body {
 .logo {
 	width: 304px;
 	height: 102px;
-	margin: 0px auto;
+	margin: 10px auto;
 	background: url(../img/sprite.png) no-repeat 0 0;
 }
 header#mainHeader .container {
@@ -142,3 +148,391 @@ top: 23px;
 	
 }
 
+.quiz {
+	margin: 0 auto;
+	width: 800px;
+}
+.quiz .header {
+	width: 772px;
+	height: 230px;
+	background: url(../img/quest-header.png) center top no-repeat;
+	position: relative;
+}
+
+.quiz .body {
+	width: 772px;
+	height: 430px;
+	background: url(../img/quest-body.png) 7px top repeat-y;
+}
+
+.quiz .footer {
+	width: 772px;
+	height: 230px;
+	background: url(../img/quest-foot.png) 7px top no-repeat;
+	position: absolute;
+	bottom: -126px;
+	z-index: 1;
+}
+.quiz .header .stats {
+	position: absolute;
+	top: 100px;
+	width: 100%;
+	padding-left: 30px;
+	padding-right: 30px;
+	font-family: 'Skranji';	
+	
+}
+.quiz .header .stats .time {
+	background: url(../img/time-frame-bg.png) center center;
+	width: 154px;
+	height: 50px;
+	position: relative;
+		display: inline-block;
+	
+}
+.quiz .header .stats .time .frame {
+	background: url(../img/time-frame.png) center center;
+	width: 154px;
+	height: 50px;
+	position: absolute;
+	z-index: 5;
+}
+.quiz .header .stats .time .progress-br {
+	width: 106px;
+	height: 28px;
+	top: 10px;
+	position: absolute;
+	left: 43px;
+		z-index: 4;
+	
+}
+.quiz .header .stats .time .progress-br-color {
+	background: url(../img/time-progress.png) left center scroll;
+	width: 100%;
+	height: 28px;
+	position: absolute;
+	
+}
+
+
+
+
+
+.quiz .header .stats .coins {
+	background: url(../img/time-frame-bg.png) center center no-repeat;;
+	width: 154px;
+	height: 50px;
+	position: relative;
+	display: inline-block;
+}
+.quiz .header .stats .coins .frame {
+	background: url(../img/exp-frame.png) center center no-repeat;;
+	width: 154px;
+	height: 50px;
+	position: absolute;
+	z-index: 5;
+}
+.quiz .header .stats .coins .frame span {
+	font-size: 20px;
+	font-weight: bold;
+	width: 50px;
+	text-align: center;
+	display: block;
+	position: absolute;
+	top: 11px;
+	  color: rgb( 255, 223, 47 );
+	    text-shadow: 0px 1px 1px rgb( 167, 90, 0 );
+}
+.quiz .header .stats .coins .progress-br {
+	width: 106px;
+	height: 28px;
+	top: 10px;
+	position: absolute;
+	left: 43px;
+		z-index: 4;
+	
+}
+.quiz .header .stats .coins .progress-br-color {
+	background: url(../img/coin-progress.png) left center scroll no-repeat;;
+	width: 100%;
+	height: 28px;
+	position: absolute;
+	
+}
+
+
+.quiz .header .stats .money {
+	background: url(../img/money-frame.png) center center no-repeat;;
+	width: 154px;
+	height: 50px;
+	position: relative;
+	display: inline-block;
+}
+
+.quiz .header .stats .money .count {
+	position: absolute;
+	width: 55px;
+	top: 12px;
+	left: 60px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 22px;
+ 
+	
+text-shadow: 2px 3px 0 #442204, -1px -1px 0 #442204, 1px -1px 0 #442204, -1px 1px 0 #442204, 1px 1px 0 #442204;
+	color: #FFF;
+}
+
+.quiz .header .stats .money  .add-more {
+	width: 30px;
+	height: 30px;
+	background: url(../img/add-more-icon.png) center center no-repeat scroll;
+	position: absolute;
+	right: 6px;
+	top: 13px;
+}
+
+
+
+
+
+
+.quiz .header .stats .diamonds {
+	background: url(../img/gems-frame.png) center center no-repeat;
+	width: 154px;
+	height: 50px;
+	position: relative;
+	display: inline-block;
+	
+}
+
+.quiz .header .stats .diamonds .count {
+	position: absolute;
+	width: 78px;
+	top: 10px;
+	left: 60px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 22px;
+text-shadow: 2px 3px 0 #442204, -1px -1px 0 #442204, 1px -1px 0 #442204, -1px 1px 0 #442204, 1px 1px 0 #442204;
+	color: #FFF;
+}
+
+
+
+.quiz .header .options { 
+font-family: 'Skranji';
+height: 49px;
+position: absolute;
+top: 160px;
+width: 100%;
+padding-left: 30px;
+padding-right: 30px;
+	
+}
+.quiz .header .options a {
+
+height: 49px;
+	position: relative;
+	display: inline-block;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+	font-variant: normal;
+	text-transform: none;
+}
+.quiz .header .options a span {
+	font-size: 14px;
+	font-weight: bold;
+	width: 38px;
+	text-align: center;
+	right: 4px;
+	display: block;
+	position: absolute;
+	top: 15px;
+	color: rgb( 255, 223, 47 );
+	text-shadow: 0px 1px 1px rgb( 167, 90, 0 );
+}
+.quiz .header .options .fifty-fifty {
+	width: 165px;
+	background: url(../img/5050.png) left top no-repeat scroll;
+}
+
+.quiz .header .options .stop-time {
+	width: 165px;
+	background: url(../img/stop-time.png) left top no-repeat scroll;
+}
+
+.quiz .header .options .change-q {
+	width: 165px;
+	background: url(../img/change-q.png) left top no-repeat scroll;
+}
+
+.quiz .header .options .show-ans {
+	width: 195px;
+	background: url(../img/show-answ.png) left top no-repeat scroll;
+}
+
+
+
+
+
+
+
+
+.quiz .body .question {
+position: absolute;
+	z-index: 10;
+padding-left: 30px;
+	
+}
+
+
+.quiz .body .question .heading {
+font-family: 'Carter One', cursive;
+  color: rgb( 165, 123, 49 );
+  font-size: 26px;
+	
+}
+.quiz .body .question h1 {
+	font-family: 'Carter One', cursive;
+  text-shadow: 1px 1px 0px rgb( 255, 255, 255 );
+  font-size: 26px;
+  color: rgb( 58, 35, 10 );
+
+	
+}
+.quiz .body {
+	position: relative;
+}
+.quiz .body .question .visual {
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	background: url(../img/quest-visual-bg.png) center center no-repeat scroll;
+	position: absolute;
+}
+.quiz .body .question .visual .border {
+	width: 142px;
+	height: 141px;
+	border-radius: 4px;
+	overflow: hidden;
+	top: 3px;
+	left: 4px;
+	position: relative;
+}
+.quiz .body .question .col {
+	width: 500px;
+	display: inline-block;
+	min-height: 150px;
+		position: absolute;
+		left: 200px;
+		
+	
+}
+.quiz .body .question .visual .border img {
+max-width: 100%;
+min-height: 100%;
+padding: 0;
+margin: 0;
+}
+
+
+
+
+
+
+.quiz .body .answers {
+	position: absolute;
+	top: 170px;
+	z-index: 2;
+	padding-right: 30px;
+}
+.quiz .body .answers a {
+	background: url(../img/answ-bg.png) center center no-repeat;
+	width: 262px;
+	height: 75px;
+	padding-left: 25px;
+	padding-top: 10px;
+	padding-right: 25px;
+	display: inline-block;
+	font: normal normal 20px/25px 'Carter One', cursive;
+	text-shadow: 2px 3px 0 #442204, -1px -1px 0 #442204, 1px -1px 0 #442204, -1px 1px 0 #442204, 1px 1px 0 #442204;
+	color: #FFF;
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 20px;
+	text-decoration: none;
+}
+
+
+.quiz .body .answers a span {
+border-radius: 50%;
+position: relative;
+border: 5px solid #FFF;
+overflow: hidden;
+display: inline-block;
+width: 85px;
+height: 85px;
+position: absolute;
+margin-top: -40px;
+margin-left: 60px;
+}
+.quiz .body .answers a span img {
+	max-width: 100%;
+	min-height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+
+
+
+
+
+
+.quiz .footer .game-progress {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 160px;
+}
+.quiz .footer .game-progress .step {
+	  color: rgb( 58, 35, 10 );
+	  font-size: 26px;
+	  text-shadow: 1px 1px 0px rgb( 255, 255, 255 );
+	font-family: 'Carter One', cursive;
+	position: relative;
+	left: 90px;
+	top: 30px;
+	
+}
+.quiz .footer .game-progress .bites {
+	width: 375px;
+	height: 30px;
+	left: 190px;
+	position: absolute;
+} 
+.quiz .footer .game-progress .bites span {
+width: 30px;
+height: 14px;
+display: inline-block;
+	background: url(../img/bites.png) center bottom;
+} 
+.wrong {
+	background: url(../img/bites.png) center top !important;
+
+}
+
+.right {
+	background: url(../img/bites.png) center center !important;
+
+}
+
+
+
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+from {width:0%;}
+to {width:100%;}
+}
