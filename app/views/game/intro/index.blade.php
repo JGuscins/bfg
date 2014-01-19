@@ -84,5 +84,5 @@
 	    </div>
 	</div>	
 </div>
-{{ var_dump($q) }}
+{{ var_dump($question) }}
 @stop
