@@ -33,7 +33,7 @@
 	    	</div>
 	    	<div class="diamonds">
 	    	<div class="count">{{ Auth::user()->points }}</div>
-	    	</div>
+	    	</div> 
 	    </div>
 	    <div class="options">
 	    	<a id="50-50" class="fifty-fifty" href="#"><span>1</span></a>
