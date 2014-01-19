@@ -754,7 +754,10 @@ Route::group(['prefix' => 'ajax'], function() {
  
 // AUTH
 Route::get('login', function() {
-    return View::make('game.intro.login');
+    $users = User::orderBy(DB::raw('RAND()'))->take(4)->get();
+
+    return View::make('game.intro.login')
+                ->with('users', $users);
 }); 
 
 
@@ -825,7 +828,7 @@ Route::get('login/fb/callback', function() {
     Session::put('uid', $uid);
 
     Auth::login($user);
- 
+    
     return Redirect::to('/')
             ->with('message', 'Logged in with Facebook');
 });

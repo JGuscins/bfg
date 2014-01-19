@@ -4,10 +4,9 @@
 	<div class="start">
 	    <div class="logo"></div>
 	    <div class="profile-images">
-	    	<div id="first"><img src="{{ URL::to('img/placeholder-dude.jpg') }}"></div>
-	    	<div id="second"><img src="{{ URL::to('img/placeholder-dude.jpg') }}"></div>
-	    	<div id="third"><img src="{{ URL::to('img/placeholder-dude.jpg') }}"></div>
-	    	<div id="fourth"><img src="{{ URL::to('img/placeholder-dude.jpg') }}"></div>
+	    	@foreach($users as $key => $item)
+	    		<div id="@if($key == 0) first @elseif($key == 1) second @elseif($key == 2) third @else fourth @endif"><img src="{{ $item->photo }}"></div>
+	    	@endforeach
 	    </div>
 		<div class="links">
 			<a href="#" onclick="window.location.href='/login/fb/';"><img src="{{ URL::to('img/lets-play-bttn.png') }}"></a>
