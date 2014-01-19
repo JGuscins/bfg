@@ -40,7 +40,7 @@ Route::any('/', ['before' => 'auth', function() {
                 // ANSWERS
 /*                 $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get(); */
                 
-                $q['answer'] = $category::select(DB::raw('WHERE `id` IN (SELECT `id` FROM `profiles` WHERE `employer_1` NOT LIKE '.addslashes($q['question']).' AND `friends` LIKE "%%,\"id\":\"'.$Session::get('uid').'\"}%%")'));
+                $q['answer'] = $category::select(DB::raw('WHERE `id` IN (SELECT `id` FROM `profiles` WHERE `employer_1` NOT LIKE '.addslashes($q['question']).' AND `friends` LIKE "%%,\"id\":\"'.Session::get('uid').'\"}%%")'));
             }
             elseif($r == 2)
             {
@@ -52,7 +52,7 @@ Route::any('/', ['before' => 'auth', function() {
                 // ANSWERS
 /*                 $q['answers'] = $category::where(DB::raw('`employer_3`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get(); */
                 
-                $q['answer'] = $category::select(DB::raw('WHERE `id` IN (SELECT `id` FROM `profiles` WHERE `employer_3` NOT LIKE '.addslashes($q['question']).' AND `friends` LIKE "%%,\"id\":\"'.$Session::get('uid').'\"}%%")'));
+                $q['answer'] = $category::select(DB::raw('WHERE `id` IN (SELECT `id` FROM `profiles` WHERE `employer_3` NOT LIKE '.addslashes($q['question']).' AND `friends` LIKE "%%,\"id\":\"'.Session::get('uid').'\"}%%")'));
             }
         } elseif($question->employer_2 != '') {
             $r = rand(1,2);
@@ -62,13 +62,13 @@ Route::any('/', ['before' => 'auth', function() {
                 // ANSWERS
 /*                 $q['answers'] = $category::where(DB::raw('`employer_1`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get(); */
                 
-                $q['answer'] = $category::select(DB::raw('WHERE `id` IN (SELECT `id` FROM `profiles` WHERE `employer_1` NOT LIKE '.addslashes($q['question']).' AND `friends` LIKE "%%,\"id\":\"'.$Session::get('uid').'\"}%%")'));
+                $q['answer'] = $category::select(DB::raw('WHERE `id` IN (SELECT `id` FROM `profiles` WHERE `employer_1` NOT LIKE '.addslashes($q['question']).' AND `friends` LIKE "%%,\"id\":\"'.Session::get('uid').'\"}%%")'));
             } else {
                 $q['question'] = $question->employer_2;
                 // ANSWERS
                 $q['answers'] = $category::where(DB::raw('`employer_2`'), DB::raw('NOT LIKE'), DB::raw("'%%".addslashes($q['question']).",%%'"))->orderBy(DB::raw('RAND()'))->take(3)->get();
                 
-                $q['answer'] = $category::select(DB::raw('WHERE `id` IN (SELECT `id` FROM `profiles` WHERE `employer_1` NOT LIKE '.addslashes($q['question']).' AND `friends` LIKE "%%,\"id\":\"'.$Session::get('uid').'\"}%%")'));       
+                $q['answer'] = $category::select(DB::raw('WHERE `id` IN (SELECT `id` FROM `profiles` WHERE `employer_1` NOT LIKE '.addslashes($q['question']).' AND `friends` LIKE "%%,\"id\":\"'.Session::get('uid').'\"}%%")'));       
             }
         } else {
             $q['question'] = $question->employer_1;

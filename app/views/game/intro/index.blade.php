@@ -51,7 +51,7 @@
 	    			@elseif($question['type'] == "Picture")
 	    				<img id="question-image" src="{{ $question['question'] }}">
 	    			@else
-	    				<img id="question-image" src="img/placeholder-dude.jpg">
+	    				<img id="question-image" src="http://www.sylvain-lader.fr/wp-content/uploads/2012/07/placeholder.jpg">
 	    			@endif
 	    		</div>
 	    	</div>
@@ -61,7 +61,7 @@
 	    		@if($question['type'] != "Picture")
 	    			{{ $question['title'] }} {{ $question['question'] }}?
 	    		@else
-	    			{{ $question['title'] }}?
+	    			{{ $question['title'] }}
 	    		@endif
 	    	</h1>
 	    	</div>
