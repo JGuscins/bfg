@@ -476,6 +476,14 @@ Route::get('get-question', function() {
         $step = Session::get('step');
         if($step == 10) {
             Session::put('step', 1);
+
+            $user = User::find(Auth::user()->id);
+
+            $badge = New Badge();
+            $badge->uid = $uid;
+            $badge->badge = "logged_in";
+            $badge = $user->badges()->save($badge);
+
         } else {
             $step = $step+1;
             Session::put('step', $step);
