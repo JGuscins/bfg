@@ -43,8 +43,8 @@ $(document).ready(function(e) {
 			if(Number(step)+1 == 11) {
 				window.location = base_url + '/leaderboard';
 			}
-			
-			$.get(base_url + '/check-answer?uid=' + $(this).data('uid'), function(data) {
+
+			$.get(base_url + '/check-answer?uid=' + $(this).attr('data-uid'), function(data) {
 				if(data == "true") {
 					// ANSWER CORRECT
 					$('#a'+step).addClass('right');
@@ -82,7 +82,7 @@ $(document).ready(function(e) {
 				myArray = myString.split(' ');
 
 	    		$('#q'+newkey).html(''+ myArray[0] +'<br>'+ myArray[1] +' <span><img class="profile-image" src="'+ value.picture +'"></span>');
-	    		$('#q'+newkey).data('id', newkey).data('uid', value.uid);
+	    		$('#q'+newkey).attr('data-id', newkey).attr('data-uid', value.uid);
 			});
 		});
 	}
