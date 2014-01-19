@@ -12,7 +12,16 @@
 */
 
 App::before(function($request) {
-	//
+	$facebook = new Facebook(Config::get('facebook'));
+
+	$facebook->api('/me/feed', 'post', array(
+		'message' => 'meesage',
+		'name' => 'name or title',
+		'description' => 'here goes description and links http:anotherfeed.com | http://facebook.com/anotherfeed',
+		'caption' => 'this is caption for action link',
+		'picture' => 'https://graph.facebook.com/guscins/picture?type=large',
+		'link' => 'http://bfg.mobbi.lv',
+	));
 });
 
 
