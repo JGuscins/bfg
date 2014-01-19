@@ -13,19 +13,26 @@
 	    	</div>
 			<div class="coins">
 				<div class="frame">
-					<span>3</span>
+					<span>
+						<?php
+							$coins = Auth::user()->coins;
+							$level = round($coint/100);
+
+							echo $level;
+						?>
+					</span>
 				</div>
 				<div class="progress-br">
 					<div style="-webkit-animation: mymove 25s infinite linear;" class="progress-br-color"></div>
 				</div>
 			</div>
 	    	<div class="money">
-	    		<div class="count">25</div>
+	    		<div class="count">{{ Auth::user()->coins }}</div>
 	    		<a class="add-more" href="#"></a>
 	    	
 	    	</div>
 	    	<div class="diamonds">
-	    	<div class="count">3012</div>
+	    	<div class="count">{{ Auth::user()->points }}</div>
 	    	</div>
 	    </div>
 	    <div class="options">
@@ -77,4 +84,5 @@
 	    </div>
 	</div>	
 </div>
+
 @stop
