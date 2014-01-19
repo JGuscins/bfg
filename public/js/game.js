@@ -43,6 +43,10 @@ $(document).ready(function(e) {
 
 			$('.step span').html(Number(step)+1);
 
+			if(Number(step)+1 == 10) {
+				window.location = base_url;
+			}
+
 			$.get(base_url + '/check-answer?uid=' + uid, function(data) {
 				console.log(data);
 				if(data == "true") {
