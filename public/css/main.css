@@ -19,7 +19,7 @@ body {
 .logo {
 	width: 304px;
 	height: 102px;
-	margin: 10px auto;
+	margin: 0px auto;
 	background: url(../img/sprite.png) no-repeat 0 0;
 }
 header#mainHeader .container {
