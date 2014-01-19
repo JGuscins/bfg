@@ -78,7 +78,7 @@ $(document).ready(function(e) {
 				myArray = myString.split(' ');
 
 	    		$('#q'+newkey).html(''+ myArray[0] +'<br>'+ myArray[1] +' <span><img class="profile-image" src="'+ value.picture +'"></span>');
-	    		$('#g'+newkey).attr('data-id', newkey).attr('data-uid', value.uid);
+	    		$('#q'+newkey).attr('data-id', newkey).attr('data-uid', value.uid);
 			});
 		});
 	}
