@@ -46,7 +46,7 @@ $(document).ready(function(e) {
 				console.log(data);
 				if(data == "true") {
 					// ANSWER CORRECT
-					$('#a'+step).addClass('correct');
+					$('#a'+step).addClass('right');
 				} else {
 					// ANSWER WRONG
 					$('#a'+step).addClass('wrong');
